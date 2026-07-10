@@ -1,5 +1,5 @@
-# Ejemplo 308: Gráficos y Componentes Avanzados
-# Requiere: forja build --features gui
+// Ejemplo 308: Gráficos y Componentes Avanzados
+// Requiere: forja build --features gui
 importar "gui"
 
 funcion main() {
@@ -51,7 +51,7 @@ funcion main() {
         
         espacio(16),
         texto_mediano("Visor Markdown:"),
-        visor_markdown("# Título Principal\n## Subtítulo\nTexto normal con **negrita** y *cursiva*\n- Elemento 1\n- Elemento 2"),
+        visor_markdown("// Título Principal\n#// Subtítulo\nTexto normal con **negrita** y *cursiva*\n- Elemento 1\n- Elemento 2"),
         
         espacio(16),
         texto_mediano("Código QR:"),

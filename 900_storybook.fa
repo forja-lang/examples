@@ -1,32 +1,32 @@
-# ═══════════════════════════════════════════════════════════════════
-#  FORJA STORYBOOK — Visor Interactivo de Componentes
-#  Muestra los ~200 componentes organizados en 11 categorías
-#  con preview en vivo, controles editables y toggle de tema.
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FORJA STORYBOOK — Visor Interactivo de Componentes
+//  Muestra los ~200 componentes organizados en 11 categorías
+//  con preview en vivo, controles editables y toggle de tema.
+// ═══════════════════════════════════════════════════════════════════
 #
-#  Ejecutar (nativo):
-#    forja-gui examples/900_storybook.fa
-#    forja-gui --dark examples/900_storybook.fa
-#    forja-gui --tema #FF5722 examples/900_storybook.fa
+//  Ejecutar (nativo):
+//    forja-gui examples/900_storybook.fa
+//    forja-gui --dark examples/900_storybook.fa
+//    forja-gui --tema #FF5722 examples/900_storybook.fa
 #
-#  Compilar y ejecutar:
-#    cargo build --features gui
-#    cargo run --bin forja --features gui -- ejemplo examples/900_storybook.fa
+//  Compilar y ejecutar:
+//    cargo build --features gui
+//    cargo run --bin forja --features gui -- ejemplo examples/900_storybook.fa
 #
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 
 importar "gui"
 
-# ═══════════════════════════════════════════════════════════════════
-#  FUNCIÓN PRINCIPAL
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FUNCIÓN PRINCIPAL
+// ═══════════════════════════════════════════════════════════════════
 
 funcion main() {
     variable pagina = 0
     variable tema_oscuro = "falso"
     variable color_seed = "#6750A4"
 
-    # Variables para controles en secciones
+    // Variables para controles en secciones
     variable btn_disabled = "falso"
     variable btn_icon = "falso"
     variable switch_val = "verdadero"
@@ -67,7 +67,7 @@ funcion main() {
                     separador(),
                     espacio(8),
 
-                    # Renderizar según categoría activa
+                    // Renderizar según categoría activa
                     si (pagina == 0) {
                         seccion_botones(btn_disabled, btn_icon)
                     } sino {
@@ -115,9 +115,9 @@ funcion main() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  TÍTULO DE CATEGORÍA
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  TÍTULO DE CATEGORÍA
+// ═══════════════════════════════════════════════════════════════════
 
 funcion titulo_categoria(p: Entero) -> Texto {
     si (p == 0) { retornar "🔘 Botones" }
@@ -151,9 +151,9 @@ funcion titulo_categoria(p: Entero) -> Texto {
     }
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 0: BOTONES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 0: BOTONES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     retornar columna(
@@ -214,9 +214,9 @@ funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 1: INPUTS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 1: INPUTS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     retornar columna(
@@ -263,9 +263,9 @@ funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 2: TARJETAS Y LISTAS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 2: TARJETAS Y LISTAS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_tarjetas() {
     retornar columna(
@@ -310,9 +310,9 @@ funcion seccion_tarjetas() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 3: FEEDBACK
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 3: FEEDBACK
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_feedback() {
     retornar columna(
@@ -350,9 +350,9 @@ funcion seccion_feedback() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 4: NAVEGACIÓN
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 4: NAVEGACIÓN
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_navegacion() {
     variable tab_activo = 0
@@ -389,9 +389,9 @@ funcion seccion_navegacion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 5: INDICADORES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 5: INDICADORES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_indicadores(progreso: Texto) {
     retornar columna(
@@ -433,9 +433,9 @@ funcion seccion_indicadores(progreso: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 6: AVATARES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 6: AVATARES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_avatares() {
     retornar columna(
@@ -465,9 +465,9 @@ funcion seccion_avatares() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 7: GRÁFICOS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 7: GRÁFICOS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_graficos(puntuacion: Texto) {
     retornar columna(
@@ -500,9 +500,9 @@ funcion seccion_graficos(puntuacion: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 8: EXPRESSIVE
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 8: EXPRESSIVE
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_expressive() {
     retornar columna(
@@ -547,9 +547,9 @@ funcion seccion_expressive() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 9: MOTION
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 9: MOTION
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_motion() {
     variable visible = verdadero
@@ -581,9 +581,9 @@ funcion seccion_motion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 10: LAYOUT
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 10: LAYOUT
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_layout() {
     retornar columna(
@@ -645,9 +645,9 @@ funcion seccion_layout() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  CALLBACKS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  CALLBACKS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion accion_story(valor: Texto) -> Texto {
     retornar valor
@@ -670,7 +670,7 @@ funcion cambiar_tab_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Diálogos ───
+// ─── Diálogos ───
 
 funcion mostrar_alerta_cb(valor: Texto) -> Texto {
     dialogo_alerta("Título", "Mensaje de alerta Material You")
@@ -693,7 +693,7 @@ funcion mostrar_personalizado_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Bottom Sheets ───
+// ─── Bottom Sheets ───
 
 funcion mostrar_hoja_cb(valor: Texto) -> Texto {
     hoja_inferior(
@@ -719,7 +719,7 @@ funcion mostrar_hoja_modal_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Notificaciones ───
+// ─── Notificaciones ───
 
 funcion mostrar_notificacion_cb(valor: Texto) -> Texto {
     notificación("Archivo guardado correctamente")

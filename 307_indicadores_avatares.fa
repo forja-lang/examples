@@ -1,6 +1,6 @@
 importar "gui"
 
-# Ejemplo: Indicadores, Avatares y Motion (Fases 7+8)
+// Ejemplo: Indicadores, Avatares y Motion (Fases 7+8)
 funcion main() {
     variable progreso = "45"
     variable mostrar = verdadero

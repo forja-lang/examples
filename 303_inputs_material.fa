@@ -1,6 +1,6 @@
-# ─── Ejemplo 303: Inputs y Formularios Material You ───────────────
-# Muestra todos los tipos de input implementados con tema Material Design 3
-# Requiere: forja run --features gui
+// ─── Ejemplo 303: Inputs y Formularios Material You ───────────────
+// Muestra todos los tipos de input implementados con tema Material Design 3
+// Requiere: forja run --features gui
 
 importar "gui"
 

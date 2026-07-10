@@ -1,29 +1,29 @@
-# ═══════════════════════════════════════════════════════════════════
-#  FORJA STORYBOOK — Responsive Edition
-#  Visor de componentes con 3 layouts según WindowSizeClass:
-#    - Compact (< 600px):  sidebar colapsada, navegación inferior
-#    - Medium (600-840px): sidebar compacta (solo iconos)
-#    - Expanded (> 840px): sidebar completa con labels
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FORJA STORYBOOK — Responsive Edition
+//  Visor de componentes con 3 layouts según WindowSizeClass:
+//    - Compact (< 600px):  sidebar colapsada, navegación inferior
+//    - Medium (600-840px): sidebar compacta (solo iconos)
+//    - Expanded (> 840px): sidebar completa con labels
+// ═══════════════════════════════════════════════════════════════════
 #
-#  Ejecutar:
-#    forja-gui examples/902_storybook_responsive.fa
+//  Ejecutar:
+//    forja-gui examples/902_storybook_responsive.fa
 #
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 
 importar "gui"
 
-# ═══════════════════════════════════════════════════════════════════
-#  FUNCIÓN PRINCIPAL
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FUNCIÓN PRINCIPAL
+// ═══════════════════════════════════════════════════════════════════
 
 funcion main() {
-    # ─── Variables de estado ───
+    // ─── Variables de estado ───
     variable pagina = 0
     variable tema_oscuro = "falso"
     variable menu_abierto = "falso"
 
-    # ─── Variables para controles ───
+    // ─── Variables para controles ───
     variable btn_disabled = "falso"
     variable btn_icon = "falso"
     variable switch_val = "verdadero"
@@ -31,9 +31,9 @@ funcion main() {
     variable texto_val = ""
     variable rating_val = "3"
 
-    # ─── Andamio principal ───
+    // ─── Andamio principal ───
     andamio(
-        # Barra superior con menú hamburguesa y acciones
+        // Barra superior con menú hamburguesa y acciones
         barra_superior(
             "📱 Forja Storybook",
             (
@@ -42,13 +42,13 @@ funcion main() {
             )
         ),
 
-        # Cuerpo: responsive según tamaño de ventana
+        // Cuerpo: responsive según tamaño de ventana
         cuerpo_responsive(pagina,
             btn_disabled, btn_icon,
             texto_val, slider_val, switch_val,
             rating_val, menu_abierto),
 
-        # Barra inferior (solo visible en Compact)
+        // Barra inferior (solo visible en Compact)
         barra_navegacion(
             (item_navegacion("🔘", "Botones"),
              item_navegacion("⌨️", "Inputs"),
@@ -60,14 +60,14 @@ funcion main() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  CUERPO RESPONSIVE (3 layouts según WindowSizeClass)
-# ═══════════════════════════════════════════════════════════════════
-#  Usa andamio() con adaptable() para cambiar entre:
-#    Compact   → sin sidebar, solo navegación inferior
-#    Medium    → sidebar compacta (iconos sin texto)
-#    Expanded  → sidebar completa (iconos + labels)
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  CUERPO RESPONSIVE (3 layouts según WindowSizeClass)
+// ═══════════════════════════════════════════════════════════════════
+//  Usa andamio() con adaptable() para cambiar entre:
+//    Compact   → sin sidebar, solo navegación inferior
+//    Medium    → sidebar compacta (iconos sin texto)
+//    Expanded  → sidebar completa (iconos + labels)
+// ═══════════════════════════════════════════════════════════════════
 
 funcion cuerpo_responsive(p: Entero,
     btn_disabled: Texto, btn_icon: Texto,
@@ -76,19 +76,19 @@ funcion cuerpo_responsive(p: Entero,
 
     retornar adaptable(
 
-        # ─── COMPACT (< 600px) ───
-        # Sin sidebar. La navegación se hace por la barra inferior.
-        # El menú hamburguesa abre un cajón lateral.
+        // ─── COMPACT (< 600px) ───
+        // Sin sidebar. La navegación se hace por la barra inferior.
+        // El menú hamburguesa abre un cajón lateral.
         columna(
             espacio(8),
 
-            # Título de categoría
+            // Título de categoría
             texto_grande(titulo_categoria(p)),
             espacio(4),
             separador(),
             espacio(8),
 
-            # Contenido desplazable
+            // Contenido desplazable
             desplazable(
                 seccion_activa(p,
                     btn_disabled, btn_icon,
@@ -96,7 +96,7 @@ funcion cuerpo_responsive(p: Entero,
                     rating_val)
             ),
 
-            # Cajón modal para navegación completa (hamburger menu)
+            // Cajón modal para navegación completa (hamburger menu)
             cajon_modal(
                 (item_navegacion("🔘", "Botones"),
                  item_navegacion("⌨️", "Inputs"),
@@ -114,9 +114,9 @@ funcion cuerpo_responsive(p: Entero,
             )
         ),
 
-        # ─── MEDIUM (600-840px) ───
-        # Sidebar compacta: solo iconos, sin labels
-        # Contenido a la derecha
+        // ─── MEDIUM (600-840px) ───
+        // Sidebar compacta: solo iconos, sin labels
+        // Contenido a la derecha
         fila((
             riel_navegacion(
                 (item_navegacion("🔘", ""),
@@ -131,10 +131,10 @@ funcion cuerpo_responsive(p: Entero,
                  item_navegacion("🏃", ""),
                  item_navegacion("📐", "")),
                 p, &cambiar_pagina_cb,
-                falso    # extendido = falso → solo iconos
+                falso    // extendido = falso → solo iconos
             ),
 
-            # Contenido principal
+            // Contenido principal
             desplazable(
                 columna(
                     texto_grande(titulo_categoria(p)),
@@ -150,9 +150,9 @@ funcion cuerpo_responsive(p: Entero,
             )
         )),
 
-        # ─── EXPANDED (> 840px) ───
-        # Sidebar completa: iconos + labels
-        # Layout tipo IDE
+        // ─── EXPANDED (> 840px) ───
+        // Sidebar completa: iconos + labels
+        // Layout tipo IDE
         fila((
             riel_navegacion(
                 (item_navegacion("🔘", "Botones"),
@@ -167,10 +167,10 @@ funcion cuerpo_responsive(p: Entero,
                  item_navegacion("🏃", "Motion"),
                  item_navegacion("📐", "Layout")),
                 p, &cambiar_pagina_cb,
-                verdadero   # extendido = verdadero → iconos + labels
+                verdadero   // extendido = verdadero → iconos + labels
             ),
 
-            # Contenido principal con más espacio
+            // Contenido principal con más espacio
             desplazable(
                 columna(
                     texto_grande(titulo_categoria(p)),
@@ -188,9 +188,9 @@ funcion cuerpo_responsive(p: Entero,
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  HELPER: Título de categoría
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  HELPER: Título de categoría
+// ═══════════════════════════════════════════════════════════════════
 
 funcion titulo_categoria(p: Entero) -> Texto {
     si (p == 0) { retornar "🔘 Botones" }
@@ -224,9 +224,9 @@ funcion titulo_categoria(p: Entero) -> Texto {
     }
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  HELPER: Sección activa
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  HELPER: Sección activa
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_activa(p: Entero,
     btn_disabled: Texto, btn_icon: Texto,
@@ -264,9 +264,9 @@ funcion seccion_activa(p: Entero,
     }
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 0: BOTONES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 0: BOTONES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     retornar columna(
@@ -309,9 +309,9 @@ funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 1: INPUTS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 1: INPUTS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     retornar columna(
@@ -342,9 +342,9 @@ funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 2: TARJETAS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 2: TARJETAS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_tarjetas() {
     retornar columna(
@@ -367,9 +367,9 @@ funcion seccion_tarjetas() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 3: FEEDBACK
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 3: FEEDBACK
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_feedback() {
     retornar columna(
@@ -392,9 +392,9 @@ funcion seccion_feedback() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 4: NAVEGACIÓN
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 4: NAVEGACIÓN
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_navegacion() {
     retornar columna(
@@ -419,9 +419,9 @@ funcion seccion_navegacion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 5: INDICADORES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 5: INDICADORES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_indicadores(progreso: Texto) {
     retornar columna(
@@ -449,9 +449,9 @@ funcion seccion_indicadores(progreso: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 6: AVATARES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 6: AVATARES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_avatares() {
     retornar columna(
@@ -470,9 +470,9 @@ funcion seccion_avatares() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 7: GRÁFICOS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 7: GRÁFICOS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_graficos(puntuacion: Texto) {
     retornar columna(
@@ -497,9 +497,9 @@ funcion seccion_graficos(puntuacion: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 8: EXPRESSIVE
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 8: EXPRESSIVE
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_expressive() {
     retornar columna(
@@ -525,9 +525,9 @@ funcion seccion_expressive() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 9: MOTION
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 9: MOTION
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_motion() {
     variable visible = verdadero
@@ -543,9 +543,9 @@ funcion seccion_motion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 10: LAYOUT
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 10: LAYOUT
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_layout() {
     retornar columna(
@@ -578,9 +578,9 @@ funcion seccion_layout() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  CALLBACKS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  CALLBACKS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion accion_story(valor: Texto) -> Texto {
     retornar valor
@@ -602,7 +602,7 @@ funcion cambiar_tab_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Diálogos ───
+// ─── Diálogos ───
 
 funcion mostrar_alerta_cb(valor: Texto) -> Texto {
     dialogo_alerta("Título", "Mensaje de alerta")

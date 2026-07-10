@@ -1,14 +1,14 @@
-# Ejemplo: Tipo Exacto (BigDecimal)
-# Demostración de precisión arbitraria
+// Ejemplo: Tipo Exacto (BigDecimal)
+// Demostración de precisión arbitraria
 
 importar "std/matematica"
 
-# Declaración básica
+// Declaración básica
 variable precio: Exacto = 19.99
 escribir("Precio:")
 escribir(precio)
 
-# Operaciones aritméticas
+// Operaciones aritméticas
 variable cantidad = 3
 variable total: Exacto = precio * cantidad
 escribir("Total (3 unidades):")
@@ -18,46 +18,46 @@ variable iva: Exacto = total * 0.21
 escribir("IVA (21%):")
 escribir(iva)
 
-# Precisión con muchos decimales
+// Precisión con muchos decimales
 variable pi_exacto: Exacto = 3.14159265358979323846
 escribir("Pi exacto:")
 escribir(pi_exacto)
 
-# Resta de exactos
+// Resta de exactos
 variable x: Exacto = 1.0
 variable y: Exacto = 0.9
 variable resta: Exacto = x - y
 escribir("1.0 - 0.9 =")
 escribir(resta)
 
-# División
+// División
 variable dividendo: Exacto = 10.0
 variable divisor: Exacto = 3.0
 variable cociente: Exacto = dividendo / divisor
 escribir("10 / 3 =")
 escribir(cociente)
 
-# Uso de stdlib (abs)
+// Uso de stdlib (abs)
 variable num: Exacto = -42.5
 variable abs_num: Exacto = abs(num)
 escribir("Absoluto de -42.5:")
 escribir(abs_num)
 
-# Comparación de exactos
+// Comparación de exactos
 variable a: Exacto = 0.1
 variable b: Exacto = 0.2
 variable suma: Exacto = a + b
 escribir("Exacto: 0.1 + 0.2 =")
 escribir(suma)
 
-# Mostrar que Exacto mantiene precisión
+// Mostrar que Exacto mantiene precisión
 variable diff: Exacto = 1.0 - 0.9999999999
 escribir("1.0 - 0.9999999999 =")
 escribir(diff)
 
-# --- Pruebas de las nuevas funciones de std/matematica ---
+// --- Pruebas de las nuevas funciones de std/matematica ---
 
-# exacto_desde_texto
+// exacto_desde_texto
 variable desde_texto: Exacto = exacto_desde_texto("123.456")
 escribir("exacto_desde_texto('123.456'):")
 escribir(desde_texto)
@@ -70,7 +70,7 @@ variable desde_negativo: Exacto = exacto_desde_texto("-3.14")
 escribir("exacto_desde_texto('-3.14'):")
 escribir(desde_negativo)
 
-# redondear_exacto
+// redondear_exacto
 variable valor_redondear: Exacto = 123.4567
 variable redondeado: Exacto = redondear_exacto(valor_redondear, 2)
 escribir("redondear_exacto(123.4567, 2):")
@@ -80,7 +80,7 @@ variable redondeado_cero: Exacto = redondear_exacto(valor_redondear, 0)
 escribir("redondear_exacto(123.4567, 0):")
 escribir(redondeado_cero)
 
-# exacto_pow
+// exacto_pow
 variable base_pow: Exacto = 2.0
 variable exp_pow: Exacto = 3.0
 variable pow_result: Exacto = exacto_pow(base_pow, exp_pow)

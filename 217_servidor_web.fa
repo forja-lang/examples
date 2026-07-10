@@ -1,10 +1,10 @@
-# Ejemplo: Servidor Web HTTP
-# Uso: forja ejecutar examples/217_servidor_web.fa
+// Ejemplo: Servidor Web HTTP
+// Uso: forja ejecutar examples/217_servidor_web.fa
 #
-# NOTA: Para probar el servidor real, descomentar iniciar(servidor) al final.
-# El servidor se ejecuta en un bucle infinito esperando conexiones.
-# La VM tiene un limite de 1M instrucciones, por lo que no se muestra
-# el servidor corriendo en este test rapido.
+// NOTA: Para probar el servidor real, descomentar iniciar(servidor) al final.
+// El servidor se ejecuta en un bucle infinito esperando conexiones.
+// La VM tiene un limite de 1M instrucciones, por lo que no se muestra
+// el servidor corriendo en este test rapido.
 
 importar "std/servidor_web"
 
@@ -39,8 +39,8 @@ funcion main() {
         i = i + 1
     }
 
-    # Para iniciar el servidor real (bucle infinito), descomentar:
-    # iniciar(servidor)
+    // Para iniciar el servidor real (bucle infinito), descomentar:
+    // iniciar(servidor)
 }
 
 main()

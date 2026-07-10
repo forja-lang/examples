@@ -17,7 +17,7 @@ funcion main() {
     escribir("  MÓDULO FECHA")
     escribir("═══════════════════════════════════")
 
-    # Fecha/hora actual en varios formatos
+    // Fecha/hora actual en varios formatos
     variable ahora = fecha.ahora()
     escribir("  ahora()          → " + ahora)
 
@@ -27,11 +27,11 @@ funcion main() {
     variable hora = fecha.hora_actual()
     escribir("  hora_actual()    → " + hora)
 
-    # Timestamp actual
+    // Timestamp actual
     variable ts = tiempo_actual()
     escribir("  timestamp        → " + ts)
 
-    # Formato personalizado
+    // Formato personalizado
     variable f1 = fecha.formatear(ts, "%A, %d de %B de %Y")
     escribir("  formatear(largo) → " + f1)
 
@@ -41,14 +41,14 @@ funcion main() {
     variable f3 = fecha.formatear(ts, "%H:%M:%S")
     escribir("  formatear(hora)  → " + f3)
 
-    # Formato largo y corto
+    // Formato largo y corto
     variable largo = fecha.formato_largo(ts)
     escribir("  formato_largo()  → " + largo)
 
     variable corto = fecha.formato_corto(ts)
     escribir("  formato_corto()  → " + corto)
 
-    # Parsear fecha desde texto
+    // Parsear fecha desde texto
     variable texto_fecha = "2026-12-25"
     variable res_parse = fecha.parsear(texto_fecha, "%Y-%m-%d")
     coincidir (res_parse) {
@@ -66,7 +66,7 @@ funcion main() {
     escribir("  MÓDULO ALEATORIO")
     escribir("═══════════════════════════════════")
 
-    # Números aleatorios
+    // Números aleatorios
     variable i = 0
     escribir("  5 números aleatorios [0, 100):")
     mientras (i < 5) {
@@ -75,7 +75,7 @@ funcion main() {
         i = i + 1
     }
 
-    # Decimales aleatorios
+    // Decimales aleatorios
     escribir("  3 decimales aleatorios [0.0, 1.0):")
     i = 0
     mientras (i < 3) {
@@ -84,16 +84,16 @@ funcion main() {
         i = i + 1
     }
 
-    # Elemento aleatorio de un arreglo
+    // Elemento aleatorio de un arreglo
     variable frutas = ["manzana", "banana", "cereza", "dátil", "uva"]
     escribir("  Arreglo original: " + frutas)
     escribir("  Elemento aleatorio: " + aleatorio.elemento(frutas))
 
-    # Mezclar arreglo
+    // Mezclar arreglo
     variable mezclado = aleatorio.mezclar(frutas)
     escribir("  Arreglo mezclado: " + mezclado)
 
-    # Semilla reproducible
+    // Semilla reproducible
     aleatorio.semilla(42)
     escribir("")
     escribir("  Con semilla fija (42):")
@@ -102,7 +102,7 @@ funcion main() {
     variable a3 = aleatorio.entero(100)
     escribir("    " + a1 + ", " + a2 + ", " + a3)
 
-    # Repetir con misma semilla da mismos valores
+    // Repetir con misma semilla da mismos valores
     aleatorio.semilla(42)
     variable b1 = aleatorio.entero(100)
     variable b2 = aleatorio.entero(100)

@@ -1,6 +1,6 @@
 /// Calcula el factorial de un número
 ///
-/// # Ejemplo
+/// // Ejemplo
 /// `factorial(5)` retorna 120
 funcion factorial(n) {
     si (n <= 1) { retornar 1 }

@@ -1,7 +1,7 @@
-# Ejemplo: Sistema de Archivos
-# Muestra todas las operaciones del módulo std/archivo
+// Ejemplo: Sistema de Archivos
+// Muestra todas las operaciones del módulo std/archivo
 #
-# Uso: forja ejecutar examples/208_archivos.fa
+// Uso: forja ejecutar examples/208_archivos.fa
 
 importar "std/archivo"
 
@@ -15,7 +15,7 @@ funcion prueba_completa_archivos() {
     variable ruta_directorio = "_prueba_directorio"
     variable contenido_esperado = "Hola desde Forja!\nLinea 2\nLinea 3"
 
-    # ─── 1. ESCRIBIR ARCHIVO ─────────────────────────────────────────────
+    // ─── 1. ESCRIBIR ARCHIVO ─────────────────────────────────────────────
     imprimir("--- 1. escribir_archivo ---")
     variable res_esc = escribir_archivo(ruta_original, contenido_esperado)
     coincidir (res_esc) {
@@ -28,7 +28,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 2. EXISTE ARCHIVO ───────────────────────────────────────────────
+    // ─── 2. EXISTE ARCHIVO ───────────────────────────────────────────────
     imprimir("--- 2. existe_archivo ---")
     si (existe_archivo(ruta_original)) {
         imprimir("  ✓ El archivo existe")
@@ -36,7 +36,7 @@ funcion prueba_completa_archivos() {
         imprimir("  ✗ ERROR: Deberia existir")
     }
 
-    # ─── 3. LEER ARCHIVO ─────────────────────────────────────────────────
+    // ─── 3. LEER ARCHIVO ─────────────────────────────────────────────────
     imprimir("--- 3. leer_archivo ---")
     variable res_lec = leer_archivo(ruta_original)
     coincidir (res_lec) {
@@ -54,7 +54,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 4. TAMAÑO ARCHIVO ───────────────────────────────────────────────
+    // ─── 4. TAMAÑO ARCHIVO ───────────────────────────────────────────────
     imprimir("--- 4. tamano_archivo ---")
     variable res_tam = tamano_archivo(ruta_original)
     coincidir (res_tam) {
@@ -66,7 +66,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 5. COPIAR ARCHIVO ───────────────────────────────────────────────
+    // ─── 5. COPIAR ARCHIVO ───────────────────────────────────────────────
     imprimir("--- 5. copiar_archivo ---")
     variable res_cop = copiar_archivo(ruta_original, ruta_copia)
     coincidir (res_cop) {
@@ -82,7 +82,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 6. MOVER ARCHIVO ────────────────────────────────────────────────
+    // ─── 6. MOVER ARCHIVO ────────────────────────────────────────────────
     imprimir("--- 6. mover_archivo ---")
     variable res_mov = mover_archivo(ruta_copia, ruta_movido)
     coincidir (res_mov) {
@@ -98,7 +98,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 7. INFORMACION DEL ARCHIVO ──────────────────────────────────────
+    // ─── 7. INFORMACION DEL ARCHIVO ──────────────────────────────────────
     imprimir("--- 7. info_archivo ---")
     variable res_info = info_archivo(ruta_original)
     coincidir (res_info) {
@@ -110,7 +110,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 8. ES DIRECTORIO ────────────────────────────────────────────────
+    // ─── 8. ES DIRECTORIO ────────────────────────────────────────────────
     imprimir("--- 8. es_directorio ---")
     si (es_directorio(".")) {
         imprimir("  ✓ '.' es un directorio")
@@ -123,7 +123,7 @@ funcion prueba_completa_archivos() {
         imprimir("  ✗ ERROR: '" + ruta_original + "' no deberia ser un directorio")
     }
 
-    # ─── 9. CREAR DIRECTORIO ─────────────────────────────────────────────
+    // ─── 9. CREAR DIRECTORIO ─────────────────────────────────────────────
     imprimir("--- 9. crear_directorio ---")
     variable res_crd = crear_directorio(ruta_directorio)
     coincidir (res_crd) {
@@ -139,7 +139,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 10. LISTAR DIRECTORIO ───────────────────────────────────────────
+    // ─── 10. LISTAR DIRECTORIO ───────────────────────────────────────────
     imprimir("--- 10. listar_directorio ---")
     variable res_lst = listar_directorio(".")
     coincidir (res_lst) {
@@ -162,7 +162,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 11. ESCRIBIR ARCHIVO EN DIRECTORIO ──────────────────────────────
+    // ─── 11. ESCRIBIR ARCHIVO EN DIRECTORIO ──────────────────────────────
     imprimir("--- 11. Archivo dentro del directorio ---")
     variable ruta_en_dir = ruta_directorio + "/archivo_interno.txt"
     variable res_esc2 = escribir_archivo(ruta_en_dir, "contenido interno")
@@ -188,7 +188,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # ─── 12. LIMPIEZA ────────────────────────────────────────────────────
+    // ─── 12. LIMPIEZA ────────────────────────────────────────────────────
     imprimir("--- 12. Limpieza ---")
     eliminar_archivo(ruta_original)
     eliminar_archivo(ruta_movido)
@@ -204,12 +204,12 @@ funcion prueba_completa_archivos() {
         imprimir("  ⚠ Algunos archivos temporales no se pudieron eliminar")
     }
 
-    # ─── 13. MANEJO DE ERRORES ───────────────────────────────────────────
+    // ─── 13. MANEJO DE ERRORES ───────────────────────────────────────────
     imprimir("")
     imprimir("═══════════ Pruebas de Manejo de Errores ═══════════")
     imprimir("")
 
-    # Error: archivo inexistente
+    // Error: archivo inexistente
     imprimir("--- Error: leer archivo inexistente ---")
     variable res_err1 = leer_archivo("_archivo_que_no_existe_12345.txt")
     coincidir (res_err1) {
@@ -221,7 +221,7 @@ funcion prueba_completa_archivos() {
         }
     }
 
-    # Error: copiar con ruta vacia
+    // Error: copiar con ruta vacia
     imprimir("--- Error: copiar con ruta vacia ---")
     variable res_err2 = copiar_archivo("", "destino.txt")
     coincidir (res_err2) {
@@ -231,7 +231,7 @@ funcion prueba_completa_archivos() {
         caso Ok(_) -> {}
     }
 
-    # Error: mover con ruta vacia
+    // Error: mover con ruta vacia
     imprimir("--- Error: mover con ruta vacia ---")
     variable res_err3 = mover_archivo("origen.txt", "")
     coincidir (res_err3) {
@@ -241,7 +241,7 @@ funcion prueba_completa_archivos() {
         caso Ok(_) -> {}
     }
 
-    # Error: eliminar archivo inexistente
+    // Error: eliminar archivo inexistente
     imprimir("--- Error: eliminar archivo inexistente ---")
     variable res_err4 = eliminar_archivo("_no_existe_eliminar.txt")
     coincidir (res_err4) {
@@ -251,7 +251,7 @@ funcion prueba_completa_archivos() {
         caso Ok(_) -> {}
     }
 
-    # existe_archivo con ruta inexistente (nunca falla)
+    // existe_archivo con ruta inexistente (nunca falla)
     imprimir("--- existe_archivo con ruta inexistente ---")
     si (no existe_archivo("_ruta_que_no_existe_999.txt")) {
         imprimir("  ✓ existe_archivo retorna falso correctamente")

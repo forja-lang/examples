@@ -1,4 +1,4 @@
-# Debug tests
+// Debug tests
 variable x: Exacto = 10.0
 variable y: Exacto = 3.0
 
@@ -9,17 +9,17 @@ escribir(y)
 escribir("x / y:")
 escribir(x / y)
 
-# Test abs
+// Test abs
 importar "std/matematica"
 variable num: Exacto = -42.5
 escribir("num:")
 escribir(num)
 
-# Simple comparison
+// Simple comparison
 escribir("num < 0:")
 escribir(num < 0)
 
-# abs
+// abs
 variable absoluto: Exacto = abs(num)
 escribir("abs(num):")
 escribir(absoluto)

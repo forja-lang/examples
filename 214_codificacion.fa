@@ -16,7 +16,7 @@ importar "std/resultado"
 funcion probar_base64() {
     escribir_linea("═══ BASE64 ═══")
 
-    # Texto simple
+    // Texto simple
     variable texto1 = "Hola Mundo"
     variable cod1 = codificacion.base64_codificar(texto1)
     escribir_linea("Original: '" + texto1 + "'")
@@ -27,7 +27,7 @@ funcion probar_base64() {
         escribir_linea("Decodificado: '" + dec1.valor + "'")
     }
 
-    # Texto con caracteres especiales
+    // Texto con caracteres especiales
     variable texto2 = "Forja™ — Lenguaje ★ educativo"
     variable cod2 = codificacion.base64_codificar(texto2)
     escribir_linea("")
@@ -39,7 +39,7 @@ funcion probar_base64() {
         escribir_linea("Decodificado: '" + dec2.valor + "'")
     }
 
-    # Error: Base64 inválido
+    // Error: Base64 inválido
     variable dec_err = codificacion.base64_decodificar("¡esto-no-es-base64!")
     si (tipo(dec_err) == "resultado_error") {
         escribir_linea("")
@@ -53,7 +53,7 @@ funcion probar_hex() {
     escribir_linea("")
     escribir_linea("═══ HEXADECIMAL ═══")
 
-    # Texto simple
+    // Texto simple
     variable texto1 = "Hola Mundo"
     variable cod1 = codificacion.hex_codificar(texto1)
     escribir_linea("Original: '" + texto1 + "'")
@@ -64,7 +64,7 @@ funcion probar_hex() {
         escribir_linea("Decodificado: '" + dec1.valor + "'")
     }
 
-    # Texto con UTF-8
+    // Texto con UTF-8
     variable texto2 = "Ñoño & Café"
     variable cod2 = codificacion.hex_codificar(texto2)
     escribir_linea("")
@@ -76,7 +76,7 @@ funcion probar_hex() {
         escribir_linea("Decodificado: '" + dec2.valor + "'")
     }
 
-    # Error: Hex inválido (caracter 'Z' no es hex)
+    // Error: Hex inválido (caracter 'Z' no es hex)
     variable dec_err = codificacion.hex_decodificar("4Z7A")
     si (tipo(dec_err) == "resultado_error") {
         escribir_linea("")
@@ -90,7 +90,7 @@ funcion probar_url() {
     escribir_linea("")
     escribir_linea("═══ URL ═══")
 
-    # Texto simple
+    // Texto simple
     variable texto1 = "hola mundo"
     variable cod1 = codificacion.url_codificar(texto1)
     escribir_linea("Original: '" + texto1 + "'")
@@ -101,7 +101,7 @@ funcion probar_url() {
         escribir_linea("Decodificado: '" + dec1.valor + "'")
     }
 
-    # URL con caracteres especiales y query string
+    // URL con caracteres especiales y query string
     variable texto2 = "a=b&c=d+e+f%20g"
     variable cod2 = codificacion.url_codificar(texto2)
     escribir_linea("")
@@ -113,7 +113,7 @@ funcion probar_url() {
         escribir_linea("Decodificado: '" + dec2.valor + "'")
     }
 
-    # URL con caracteres acentuados y símbolos
+    // URL con caracteres acentuados y símbolos
     variable texto3 = "¿qué es Forja? ¡un lenguaje de programación! $100 + IVA"
     variable cod3 = codificacion.url_codificar(texto3)
     escribir_linea("")
@@ -125,7 +125,7 @@ funcion probar_url() {
         escribir_linea("Decodificado: '" + dec3.valor + "'")
     }
 
-    # Decodificar con %XX y +
+    // Decodificar con %XX y +
     variable url_codificada = "Hola+%2B+Adi%C3%B3s"
     variable dec4 = codificacion.url_decodificar(url_codificada)
     si (tipo(dec4) == "resultado_ok") {
@@ -134,7 +134,7 @@ funcion probar_url() {
         escribir_linea("Decodificado: '" + dec4.valor + "'")
     }
 
-    # Error: URL inválida (% sin 2 dígitos)
+    // Error: URL inválida (% sin 2 dígitos)
     variable dec_err = codificacion.url_decodificar("Hola%2GMundo")
     si (tipo(dec_err) == "resultado_error") {
         escribir_linea("")
@@ -143,7 +143,7 @@ funcion probar_url() {
         escribir_linea("  codigo: " + dec_err.error.codigo)
     }
 
-    # Decodificar + como espacio
+    // Decodificar + como espacio
     variable url_con_plus = "string+con+espacios"
     variable dec5 = codificacion.url_decodificar(url_con_plus)
     si (tipo(dec5) == "resultado_ok") {
@@ -152,7 +152,7 @@ funcion probar_url() {
         escribir_linea("Decodificado: '" + dec5.valor + "'")
     }
 
-    # Caracteres seguros no se codifican: letras, dígitos, _, -, ., ~
+    // Caracteres seguros no se codifican: letras, dígitos, _, -, ., ~
     variable texto4 = "hello_123-45.test~end"
     variable cod4 = codificacion.url_codificar(texto4)
     escribir_linea("")
@@ -164,23 +164,23 @@ funcion probar_hex_case() {
     escribir_linea("")
     escribir_linea("═══ HEX — MAYÚSCULAS/MINÚSCULAS ═══")
 
-    # Verificar que hex_codificar produzca mayúsculas
+    // Verificar que hex_codificar produzca mayúsculas
     variable cod = codificacion.hex_codificar("abc")
     escribir_linea("hex_codificar('abc') = " + cod)
 
-    # Verificar que hex_decodificar acepte minúsculas
+    // Verificar que hex_decodificar acepte minúsculas
     variable dec_min = codificacion.hex_decodificar("616263")
     si (tipo(dec_min) == "resultado_ok") {
         escribir_linea("hex_decodificar('616263') = '" + dec_min.valor + "'")
     }
 
-    # Verificar que hex_decodificar acepte mayúsculas
+    // Verificar que hex_decodificar acepte mayúsculas
     variable dec_may = codificacion.hex_decodificar("414243")
     si (tipo(dec_may) == "resultado_ok") {
         escribir_linea("hex_decodificar('414243') = '" + dec_may.valor + "'")
     }
 
-    # Verificar que hex_decodificar acepte mixto
+    // Verificar que hex_decodificar acepte mixto
     variable dec_mix = codificacion.hex_decodificar("aBcDeF")
     si (tipo(dec_mix) == "resultado_ok") {
         escribir_linea("hex_decodificar('aBcDeF') = '" + dec_mix.valor + "'")

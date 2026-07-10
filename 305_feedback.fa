@@ -1,5 +1,5 @@
-# Ejemplo: Feedback y Superposiciones Material You
-# Muestra: Diálogos, Bottom Sheets, Snackbar, Tooltips y Menús
+// Ejemplo: Feedback y Superposiciones Material You
+// Muestra: Diálogos, Bottom Sheets, Snackbar, Tooltips y Menús
 importar "gui"
 
 funcion main() {

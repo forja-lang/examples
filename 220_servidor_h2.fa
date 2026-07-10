@@ -1,11 +1,11 @@
-# Ejemplo 220: Servidor HTTP/2 (h2c)
-#
-# Uso: forja run examples/220_servidor_h2.fa
-# Luego: curl --http2-prior-knowledge http://localhost:9500/
-# O navegar con navegador que soporte h2c (pocos)
-#
-# NOTA: HTTP/2 sin TLS (h2c) requiere prior knowledge o upgrade HTTP/1.1
-# La mayoria de navegadores requieren TLS para HTTP/2
+// Ejemplo 220: Servidor HTTP/2 (h2c)
+//
+// Uso: forja run examples/220_servidor_h2.fa
+// Luego: curl --http2-prior-knowledge http://localhost:9500/
+// O navegar con navegador que soporte h2c (pocos)
+//
+// NOTA: HTTP/2 sin TLS (h2c) requiere prior knowledge o upgrade HTTP/1.1
+// La mayoria de navegadores requieren TLS para HTTP/2
 
 importar "std/servidor_h2"
 

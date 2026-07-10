@@ -1,5 +1,5 @@
-# Ejemplo: Navegación Material You
-# Muestra: barra superior, búsqueda, pestañas y barra de navegación inferior
+// Ejemplo: Navegación Material You
+// Muestra: barra superior, búsqueda, pestañas y barra de navegación inferior
 
 importar "gui"
 
@@ -17,7 +17,7 @@ funcion main() {
         pestañas(("Inicio", "Explorar", "Perfil"), pagina, &cambiar_pagina),
         espacio(16),
 
-        # Contenido según página
+        // Contenido según página
         si pagina == 0 {
             tarjeta(columna((
                 texto_mediano("Página de Inicio"),

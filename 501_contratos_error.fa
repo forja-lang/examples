@@ -1,13 +1,13 @@
-# ═══════════════════════════════════════════
-# Contratos que FALLAN (para probar)
-# ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// Contratos que FALLAN (para probar)
+// ═══════════════════════════════════════════
 
 importar "std/io"
 
-# Esta función FALLARÁ por precondición
+// Esta función FALLARÁ por precondición
 funcion test_precondicion() {
     imprimir("Intentando dividir(10, 0)...")
-    variable r = dividir(10, 0)  # ← FALLA: precondición b != 0
+    variable r = dividir(10, 0)  // ← FALLA: precondición b != 0
     imprimir("  Esto no debería ejecutarse")
 }
 

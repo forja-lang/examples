@@ -1,30 +1,30 @@
-# ═══════════════════════════════════════════════════════════════════
-#  FORJA STORYBOOK — Theme Edition
-#  Storybook completo + panel de control de tema en vivo:
-#    - Selector de color semilla (Material You / Monet)
-#    - Toggle claro/oscuro
-#    - Preview de paleta de colores generada
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FORJA STORYBOOK — Theme Edition
+//  Storybook completo + panel de control de tema en vivo:
+//    - Selector de color semilla (Material You / Monet)
+//    - Toggle claro/oscuro
+//    - Preview de paleta de colores generada
+// ═══════════════════════════════════════════════════════════════════
 #
-#  Ejecutar:
-#    forja-gui examples/901_storybook_theme.fa
-#    forja-gui --dark --tema #004D40 examples/901_storybook_theme.fa
+//  Ejecutar:
+//    forja-gui examples/901_storybook_theme.fa
+//    forja-gui --dark --tema #004D40 examples/901_storybook_theme.fa
 #
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
 
 importar "gui"
 
-# ═══════════════════════════════════════════════════════════════════
-#  FUNCIÓN PRINCIPAL
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  FUNCIÓN PRINCIPAL
+// ═══════════════════════════════════════════════════════════════════
 
 funcion main() {
-    # ─── Variables de estado ───
+    // ─── Variables de estado ───
     variable pagina = 0
     variable tema_oscuro = "falso"
     variable color_semilla = "#6750A4"
 
-    # ─── Variables para controles ───
+    // ─── Variables para controles ───
     variable btn_disabled = "falso"
     variable btn_icon = "falso"
     variable switch_val = "verdadero"
@@ -32,10 +32,10 @@ funcion main() {
     variable texto_val = ""
     variable rating_val = "3"
 
-    # ─── Colores predefinidos ───
+    // ─── Colores predefinidos ───
     variable color_idx = 0
 
-    # ─── Andamio principal ───
+    // ─── Andamio principal ───
     andamio(
         barra_superior(
             "🎨 Forja Storybook — Theme",
@@ -47,9 +47,9 @@ funcion main() {
 
         fila((
 
-            # ──────────────────────────────────────────────
-            # SIDEBAR: Navegación por categorías
-            # ──────────────────────────────────────────────
+            // ──────────────────────────────────────────────
+            // SIDEBAR: Navegación por categorías
+            // ──────────────────────────────────────────────
             riel_navegacion(
                 (item_navegacion("🔘", "Botones"),
                  item_navegacion("⌨️", "Inputs"),
@@ -66,20 +66,20 @@ funcion main() {
                 &cambiar_pagina_cb
             ),
 
-            # ──────────────────────────────────────────────
-            # CONTENIDO PRINCIPAL
-            # ──────────────────────────────────────────────
+            // ──────────────────────────────────────────────
+            // CONTENIDO PRINCIPAL
+            // ──────────────────────────────────────────────
             desplazable(
                 columna(
 
-                    # ── Panel de control de tema ──
+                    // ── Panel de control de tema ──
                     panel_tema(color_semilla, tema_oscuro, color_idx),
 
                     espacio(8),
                     separador(),
                     espacio(8),
 
-                    # ── Contenido de la categoría activa ──
+                    // ── Contenido de la categoría activa ──
                     texto_grande(titulo_categoria(pagina)),
                     espacio(4),
                     separador(),
@@ -95,9 +95,9 @@ funcion main() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  PANEL DE CONTROL DE TEMA
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  PANEL DE CONTROL DE TEMA
+// ═══════════════════════════════════════════════════════════════════
 
 funcion panel_tema(color: Texto, oscuro: Texto, idx: Entero) {
     retornar columna(
@@ -106,7 +106,7 @@ funcion panel_tema(color: Texto, oscuro: Texto, idx: Entero) {
         separador(),
         espacio(8),
 
-        # ── Selector de color semilla ──
+        // ── Selector de color semilla ──
         texto_mediano("Color semilla (Material You)"),
         espacio(4),
         fila_con_gap((
@@ -115,7 +115,7 @@ funcion panel_tema(color: Texto, oscuro: Texto, idx: Entero) {
         ), 8, "centro"),
         espacio(4),
 
-        # ── Colores predefinidos ──
+        // ── Colores predefinidos ──
         texto_mediano("Colores predefinidos"),
         espacio(4),
         fila_con_gap((
@@ -129,14 +129,14 @@ funcion panel_tema(color: Texto, oscuro: Texto, idx: Entero) {
 
         espacio(12),
 
-        # ── Toggle claro/oscuro ──
+        // ── Toggle claro/oscuro ──
         texto_mediano("Modo de tema"),
         espacio(4),
         interruptor("Modo oscuro", oscuro),
 
         espacio(12),
 
-        # ── Preview de paleta ──
+        // ── Preview de paleta ──
         texto_mediano("Preview de paleta"),
         espacio(4),
         fila_con_gap((
@@ -160,9 +160,9 @@ funcion panel_tema(color: Texto, oscuro: Texto, idx: Entero) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  HELPER: Preview de color (cajita de color)
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  HELPER: Preview de color (cajita de color)
+// ═══════════════════════════════════════════════════════════════════
 
 funcion preview_color(hex: Texto) {
     retornar caja_fija(
@@ -171,9 +171,9 @@ funcion preview_color(hex: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  HELPER: Título de categoría
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  HELPER: Título de categoría
+// ═══════════════════════════════════════════════════════════════════
 
 funcion titulo_categoria(p: Entero) -> Texto {
     si (p == 0) { retornar "🔘 Botones" }
@@ -207,9 +207,9 @@ funcion titulo_categoria(p: Entero) -> Texto {
     }
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  HELPER: Selecciona la sección activa
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  HELPER: Selecciona la sección activa
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_activa(p: Entero, btn_disabled: Texto, btn_icon: Texto,
                         texto_val: Texto, slider_val: Texto, switch_val: Texto,
@@ -245,9 +245,9 @@ funcion seccion_activa(p: Entero, btn_disabled: Texto, btn_icon: Texto,
     }
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 0: BOTONES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 0: BOTONES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     retornar columna(
@@ -300,9 +300,9 @@ funcion seccion_botones(disabled: Texto, con_icono: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 1: INPUTS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 1: INPUTS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     retornar columna(
@@ -336,9 +336,9 @@ funcion seccion_inputs(texto: Texto, slider: Texto, sw: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 2: TARJETAS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 2: TARJETAS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_tarjetas() {
     retornar columna(
@@ -382,9 +382,9 @@ funcion seccion_tarjetas() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 3: FEEDBACK
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 3: FEEDBACK
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_feedback() {
     retornar columna(
@@ -419,9 +419,9 @@ funcion seccion_feedback() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 4: NAVEGACIÓN
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 4: NAVEGACIÓN
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_navegacion() {
     variable tab_activo = 0
@@ -452,9 +452,9 @@ funcion seccion_navegacion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 5: INDICADORES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 5: INDICADORES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_indicadores(progreso: Texto) {
     retornar columna(
@@ -491,9 +491,9 @@ funcion seccion_indicadores(progreso: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 6: AVATARES
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 6: AVATARES
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_avatares() {
     retornar columna(
@@ -522,9 +522,9 @@ funcion seccion_avatares() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 7: GRÁFICOS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 7: GRÁFICOS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_graficos(puntuacion: Texto) {
     retornar columna(
@@ -557,9 +557,9 @@ funcion seccion_graficos(puntuacion: Texto) {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 8: EXPRESSIVE
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 8: EXPRESSIVE
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_expressive() {
     retornar columna(
@@ -591,9 +591,9 @@ funcion seccion_expressive() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 9: MOTION
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 9: MOTION
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_motion() {
     variable visible = verdadero
@@ -612,9 +612,9 @@ funcion seccion_motion() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  SECCIÓN 10: LAYOUT
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  SECCIÓN 10: LAYOUT
+// ═══════════════════════════════════════════════════════════════════
 
 funcion seccion_layout() {
     retornar columna(
@@ -649,9 +649,9 @@ funcion seccion_layout() {
     )
 }
 
-# ═══════════════════════════════════════════════════════════════════
-#  CALLBACKS
-# ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════════
+//  CALLBACKS
+// ═══════════════════════════════════════════════════════════════════
 
 funcion accion_story(valor: Texto) -> Texto {
     retornar valor
@@ -674,7 +674,7 @@ funcion cambiar_tab_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Colores predefinidos ───
+// ─── Colores predefinidos ───
 
 funcion color_morado_cb(valor: Texto) -> Texto {
     notificación("Color semilla: Púrpura (#6750A4)")
@@ -706,7 +706,7 @@ funcion color_gris_cb(valor: Texto) -> Texto {
     retornar valor
 }
 
-# ─── Diálogos ───
+// ─── Diálogos ───
 
 funcion mostrar_alerta_cb(valor: Texto) -> Texto {
     dialogo_alerta("Título", "Mensaje de alerta Material You")

@@ -1,5 +1,5 @@
-# Ejemplo: Tarjetas, Listas y Tablas Material You
-# Requiere: forja build --features gui
+// Ejemplo: Tarjetas, Listas y Tablas Material You
+// Requiere: forja build --features gui
 
 importar "gui"
 

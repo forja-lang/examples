@@ -1,5 +1,5 @@
-# Ejemplo 309: Material You Expressive
-# Requiere: forja build --features gui
+// Ejemplo 309: Material You Expressive
+// Requiere: forja build --features gui
 importar "gui"
 
 funcion main() {

@@ -1,7 +1,7 @@
-# Ejemplo: Módulo JSON
-# Muestra parseo y generación de JSON con std/json
+// Ejemplo: Módulo JSON
+// Muestra parseo y generación de JSON con std/json
 #
-# Uso: forja ejecutar examples/209_json.fa
+// Uso: forja ejecutar examples/209_json.fa
 
 importar "std/json"
 importar "std/archivo"
@@ -10,10 +10,10 @@ funcion prueba_json() {
     imprimir("=== Prueba de Módulo JSON ===")
     imprimir("")
 
-    # ─── 1. PARSEAR JSON ─────────────────────────────────────────────────
+    // ─── 1. PARSEAR JSON ─────────────────────────────────────────────────
     imprimir("--- 1. parsear ---")
 
-    # JSON objeto
+    // JSON objeto
     variable json_str = '{"nombre": "Ana", "edad": 30, "activo": true, "salario": 45000.50}'
     variable res_parse = json.parsear(json_str)
     coincidir (res_parse) {
@@ -29,7 +29,7 @@ funcion prueba_json() {
         }
     }
 
-    # JSON array
+    // JSON array
     variable json_arr = '[10, 20, 30, 40, 50]'
     variable res_arr = json.parsear(json_arr)
     coincidir (res_arr) {
@@ -44,7 +44,7 @@ funcion prueba_json() {
         }
     }
 
-    # JSON anidado
+    // JSON anidado
     variable json_complejo = '{"personas": [{"nombre": "Luis", "edad": 25}, {"nombre": "Maria", "edad": 35}], "total": 2}'
     variable res_complejo = json.parsear(json_complejo)
     coincidir (res_complejo) {
@@ -62,7 +62,7 @@ funcion prueba_json() {
         }
     }
 
-    # Error de parseo
+    // Error de parseo
     variable json_invalido = '{invalido}'
     variable res_error = json.parsear(json_invalido)
     coincidir (res_error) {
@@ -74,11 +74,11 @@ funcion prueba_json() {
         }
     }
 
-    # ─── 2. STRINGIFICAR ─────────────────────────────────────────────────
+    // ─── 2. STRINGIFICAR ─────────────────────────────────────────────────
     imprimir("")
     imprimir("--- 2. stringificar ---")
 
-    # Mapa a JSON
+    // Mapa a JSON
     variable mapa = {}
     mapa["nombre"] = "Carlos"
     mapa["edad"] = 28
@@ -94,7 +94,7 @@ funcion prueba_json() {
         }
     }
 
-    # Array a JSON
+    // Array a JSON
     variable lista = [1, 2, "tres", verdadero, nulo]
     variable res_lista = json.stringificar(lista)
     coincidir (res_lista) {
@@ -106,7 +106,7 @@ funcion prueba_json() {
         }
     }
 
-    # Valores simples
+    // Valores simples
     variable res_num = json.stringificar(42)
     coincidir (res_num) {
         caso Ok(texto) -> {
@@ -137,7 +137,7 @@ funcion prueba_json() {
         }
     }
 
-    # ─── 3. LECTURA Y ESCRITURA DE ARCHIVOS JSON ────────────────────────
+    // ─── 3. LECTURA Y ESCRITURA DE ARCHIVOS JSON ────────────────────────
     imprimir("")
     imprimir("--- 3. leer_json / escribir_json ---")
 
@@ -147,7 +147,7 @@ funcion prueba_json() {
     datos["version"] = 1
     datos["lenguajes"] = ["Rust", "Forja"]
 
-    # Escribir
+    // Escribir
     variable res_esc = json.escribir_json(ruta_json, datos)
     coincidir (res_esc) {
         caso Ok(_) -> {
@@ -158,7 +158,7 @@ funcion prueba_json() {
         }
     }
 
-    # Leer
+    // Leer
     variable res_lec = json.leer_json(ruta_json)
     coincidir (res_lec) {
         caso Ok(leido) -> {
@@ -175,7 +175,7 @@ funcion prueba_json() {
         }
     }
 
-    # Limpiar archivo temporal
+    // Limpiar archivo temporal
     variable res_elim = eliminar_archivo(ruta_json)
     si (res_elim == 0) {
         imprimir("  ✓ Archivo temporal eliminado")

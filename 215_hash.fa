@@ -16,7 +16,7 @@ importar "std/resultado"
 funcion probar_sha256_basico() {
     escribir_linea("═══ SHA-256 BÁSICO ═══")
 
-    # Texto simple
+    // Texto simple
     variable texto1 = "Hola Mundo"
     variable hash1 = hash.sha256(texto1)
     si (tipo(hash1) == "resultado_ok") {
@@ -27,7 +27,7 @@ funcion probar_sha256_basico() {
 
     escribir_linea("")
 
-    # Texto con caracteres especiales
+    // Texto con caracteres especiales
     variable texto2 = "Forja™ — Lenguaje ★ educativo"
     variable hash2 = hash.sha256(texto2)
     si (tipo(hash2) == "resultado_ok") {
@@ -40,7 +40,7 @@ funcion probar_consistencia() {
     escribir_linea("")
     escribir_linea("═══ CONSISTENCIA ═══")
 
-    # Mismo input debe producir mismo hash
+    // Mismo input debe producir mismo hash
     variable texto = "Forja es genial"
     variable hash_a = hash.sha256(texto)
     variable hash_b = hash.sha256(texto)
@@ -58,14 +58,14 @@ funcion probar_diferentes_inputs() {
     escribir_linea("")
     escribir_linea("═══ DIFERENTES INPUTS → DIFERENTES HASHES ═══")
 
-    # Inputs similares producen hashes completamente diferentes (efecto avalancha)
+    // Inputs similares producen hashes completamente diferentes (efecto avalancha)
     variable inputs = [
         "hola",
-        "Hola",       # mayúscula inicial
-        "hola!",       # signo de exclamación
-        "hola!",       # duplicado para probar consistencia
+        "Hola",       // mayúscula inicial
+        "hola!",       // signo de exclamación
+        "hola!",       // duplicado para probar consistencia
         "hola mundo",
-        "hola  mundo"  # doble espacio
+        "hola  mundo"  // doble espacio
     ]
 
     variable i = 0
@@ -82,7 +82,7 @@ funcion probar_error_vacio() {
     escribir_linea("")
     escribir_linea("═══ MANEJO DE ERRORES ═══")
 
-    # Cadena vacía debe retornar error
+    // Cadena vacía debe retornar error
     variable resultado = hash.sha256("")
     si (tipo(resultado) == "resultado_error") {
         escribir_linea("Error esperado al hashear cadena vacía:")
@@ -95,12 +95,12 @@ funcion probar_hex_como_se_espera() {
     escribir_linea("")
     escribir_linea("═══ VERIFICACIÓN DE HASH CONOCIDO ═══")
 
-    # SHA-256 de "abc" (conocido): 
-    # ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+    // SHA-256 de "abc" (conocido): 
+    // ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
     variable resultado = hash.sha256("abc")
     si (tipo(resultado) == "resultado_ok") {
         escribir_linea("SHA-256('abc') = " + resultado.valor)
-        # Verificar que sea el valor esperado
+        // Verificar que sea el valor esperado
         variable esperado = "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
         escribir_linea("Esperado:       " + esperado)
         variable coincide = (resultado.valor == esperado)

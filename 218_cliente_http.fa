@@ -1,5 +1,5 @@
-# Ejemplo: Cliente HTTP Simple
-# Uso: forja ejecutar examples/218_cliente_http.fa
+// Ejemplo: Cliente HTTP Simple
+// Uso: forja ejecutar examples/218_cliente_http.fa
 
 importar "std/cliente_http"
 

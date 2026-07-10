@@ -1,5 +1,5 @@
-# Ejemplo: WebSocket Cliente
-# Uso: forja ejecutar examples/219_websocket.fa
+// Ejemplo: WebSocket Cliente
+// Uso: forja ejecutar examples/219_websocket.fa
 
 importar "std/websocket"
 

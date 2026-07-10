@@ -1,11 +1,11 @@
-# ─────────────────────────────────────────────────────────────────────
-# Iconos Material Design - Demostración
-# Forja GUI + Xilem
-# ─────────────────────────────────────────────────────────────────────
-# Muestra el sistema de iconos vectoriales Material Design.
-# Los iconos se renderizan como emoji con tamaño y color,
-# preparados para migrar a SVG real cuando Xilem lo soporte.
-# ─────────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────
+// Iconos Material Design - Demostración
+// Forja GUI + Xilem
+// ─────────────────────────────────────────────────────────────────────
+// Muestra el sistema de iconos vectoriales Material Design.
+// Los iconos se renderizan como emoji con tamaño y color,
+// preparados para migrar a SVG real cuando Xilem lo soporte.
+// ─────────────────────────────────────────────────────────────────────
 
 importar "gui"
 
@@ -191,7 +191,7 @@ funcion main() {
         texto_mediano("Ejemplo completo con grid de iconos:"),
         espacio(8),
 
-        # Grid de iconos básicos con colores del tema
+        // Grid de iconos básicos con colores del tema
         columna_con_gap((
             fila_con_gap((
                 icono_material("home", 24, "primary"),

@@ -1,11 +1,11 @@
-# ═══════════════════════════════════════════
-# Design by Contract — Ejemplo completo
-# ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// Design by Contract — Ejemplo completo
+// ═══════════════════════════════════════════
 
 importar "std/io"
 importar "std/matematica"
 
-# ─── Función con contrato simple ───
+// ─── Función con contrato simple ───
 funcion dividir(a: Entero, b: Entero) -> Entero
     requiere b != 0, "No se puede dividir por cero"
     asegura resultado <= a, "El resultado no excede al dividendo"
@@ -13,7 +13,7 @@ funcion dividir(a: Entero, b: Entero) -> Entero
     retornar a / b
 }
 
-# ─── Función con múltiples precondiciones ───
+// ─── Función con múltiples precondiciones ───
 funcion raiz_cuadrada_entera(n: Entero) -> Entero
     requiere n >= 0, "No se puede calcular raíz de un número negativo"
     requiere n < 1000000, "El número es demasiado grande"
@@ -28,7 +28,7 @@ funcion raiz_cuadrada_entera(n: Entero) -> Entero
     retornar i - 1
 }
 
-# ─── Función con anterior() ───
+// ─── Función con anterior() ───
 funcion duplicar(x: Entero) -> Entero
     requiere x > 0
     asegura resultado == anterior(x) * 2, "El resultado debe ser el doble del original"
@@ -36,7 +36,7 @@ funcion duplicar(x: Entero) -> Entero
     retornar x * 2
 }
 
-# ─── Clase con invariante ───
+// ─── Clase con invariante ───
 clase Contador
     siempre valor >= 0, "El contador nunca es negativo"
     siempre valor <= 100, "El contador no excede el máximo"
@@ -62,30 +62,30 @@ clase Contador
     }
 }
 
-# ─── Tests de contratos ───
+// ─── Tests de contratos ───
 funcion main() {
     imprimir("═══ Tests de Contratos ═══")
     imprimir_linea()
     
-    # Test 1: Contrato que pasa
+    // Test 1: Contrato que pasa
     imprimir("Test 1: dividir(10, 2) == 5")
     variable r1 = dividir(10, 2)
     asegurar_tests(r1 == 5, "dividir(10, 2) debería ser 5")
     imprimir("  ✓ OK: " + r1)
     
-    # Test 2: resultado en postcondición
+    // Test 2: resultado en postcondición
     imprimir("Test 2: raiz_cuadrada_entera(25) == 5")
     variable r2 = raiz_cuadrada_entera(25)
     asegurar_tests(r2 == 5, "raíz de 25 debería ser 5")
     imprimir("  ✓ OK: " + r2)
     
-    # Test 3: anterior() en postcondición
+    // Test 3: anterior() en postcondición
     imprimir("Test 3: duplicar(7) == 14")
     variable r3 = duplicar(7)
     asegurar_tests(r3 == 14, "duplicar(7) debería ser 14")
     imprimir("  ✓ OK: " + r3)
     
-    # Test 4: Clase con invariante
+    // Test 4: Clase con invariante
     imprimir("Test 4: Contador con invariante")
     variable c = nuevo Contador()
     c.incrementar()
