@@ -2,8 +2,9 @@
 // Muestra: Diálogos, Bottom Sheets, Snackbar, Tooltips y Menús
 importar "gui"
 
+variable mostrar_snackbar = falso
+
 funcion main() {
-    variable mostrar_snackbar = falso
     variable mostrar_hoja = falso
     variable seleccion_menu = 0
     

@@ -5,10 +5,10 @@
 //    - Medium (600-840px): sidebar compacta (solo iconos)
 //    - Expanded (> 840px): sidebar completa con labels
 // ═══════════════════════════════════════════════════════════════════
-#
+//
 //  Ejecutar:
 //    forja-gui examples/902_storybook_responsive.fa
-#
+//
 // ═══════════════════════════════════════════════════════════════════
 
 importar "gui"

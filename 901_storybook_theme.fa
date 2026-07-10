@@ -5,11 +5,11 @@
 //    - Toggle claro/oscuro
 //    - Preview de paleta de colores generada
 // ═══════════════════════════════════════════════════════════════════
-#
+//
 //  Ejecutar:
 //    forja-gui examples/901_storybook_theme.fa
 //    forja-gui --dark --tema #004D40 examples/901_storybook_theme.fa
-#
+//
 // ═══════════════════════════════════════════════════════════════════
 
 importar "gui"
