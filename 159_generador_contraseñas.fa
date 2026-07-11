@@ -17,7 +17,7 @@ funcion generar_caracter_aleatorio(inicio, fin) -> Texto {
     retornar caracter(codigo)
 }
 
-funcion mezclar_array(arr) {
+funcion mezclar_array(mut arr) {
     variable n = longitud(arr)
     variable i = 0
     mientras (i < n) {

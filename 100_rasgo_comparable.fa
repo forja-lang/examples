@@ -55,7 +55,7 @@ implementa Comparable para Producto {
     }
 }
 
-funcion ordenar_lista(lista) {
+funcion ordenar_lista(mut lista) {
     variable n = longitud(lista)
     variable i = 0
     mientras (i < n) {
