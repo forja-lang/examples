@@ -34,7 +34,7 @@ hacer_coincidir(path_val) {
     caso Some(v) -> {
         escribir("  PATH = " + v)
     }
-    caso None -> {
+    caso Ninguno -> {
         escribir("  PATH: no definida")
     }
 }
@@ -45,27 +45,27 @@ hacer_coincidir(user) {
     caso Some(v) -> {
         escribir("  USERNAME = " + v)
     }
-    caso None -> {
+    caso Ninguno -> {
         variable user2 = sistema.variable_entorno("USER")
         hacer_coincidir(user2) {
             caso Some(v) -> {
                 escribir("  USER = " + v)
             }
-            caso None -> {
+            caso Ninguno -> {
                 escribir("  USER: no definida")
             }
         }
     }
 }
 
-// Variable que no existe (demostración de None)
+// Variable que no existe (demostración de Ninguno)
 variable inexistente = sistema.variable_entorno("VARIABLE_QUE_NO_EXISTE_12345")
 hacer_coincidir(inexistente) {
     caso Some(_) -> {
         escribir("  (inesperado) variable inexistente tiene valor")
     }
-    caso None -> {
-        escribir("  ✅ variable_entorno() retorna None para variables inexistentes")
+    caso Ninguno -> {
+        escribir("  ✅ variable_entorno() retorna Ninguno para variables inexistentes")
     }
 }
 escribir("")

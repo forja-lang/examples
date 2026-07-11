@@ -1,5 +1,5 @@
 /// Desempaquetar Opcion con match
-/// Conceptos: coincidir, caso, patrones Some/None, extraer valores
+/// Conceptos: coincidir, caso, patrones Some/Ninguno, extraer valores
 /// Nivel: intermedio
 
 importar "std/io"
@@ -15,7 +15,7 @@ funcion buscar_en_lista(lista, objetivo) -> Opcion<Entero> {
         }
         i = i + 1
     }
-    retornar None
+    retornar Ninguno
 }
 
 funcion main() {
@@ -28,7 +28,7 @@ funcion main() {
         caso Some(valor) -> {
             escribir("Encontrado en índice: ${valor}")
         }
-        caso None -> {
+        caso Ninguno -> {
             escribir("Valor no encontrado")
         }
     }
@@ -40,7 +40,7 @@ funcion main() {
         caso Some(valor) -> {
             escribir("Encontrado: ${valor}")
         }
-        caso None -> {
+        caso Ninguno -> {
             escribir("El 99 no está en la lista")
         }
     }

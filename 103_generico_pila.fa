@@ -30,14 +30,14 @@ clase Pila<T> {
             este.elementos = nueva
             retornar Some(valor)
         }
-        retornar None
+        retornar Ninguno
     }
     
     funcion cima() -> Opcion<T> {
         si (longitud(este.elementos) > 0) {
             retornar Some(este.elementos[0])
         }
-        retornar None
+        retornar Ninguno
     }
     
     funcion esta_vacia() -> Booleano {

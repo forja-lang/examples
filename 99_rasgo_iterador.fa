@@ -28,7 +28,7 @@ implementa Iterador<Entero> para IteradorLista {
             este.posicion = este.posicion + 1
             retornar Some(valor)
         }
-        retornar None
+        retornar Ninguno
     }
     
     function tiene_siguiente() -> Booleano {
@@ -53,7 +53,7 @@ implementa Iterador<Texto> para IteradorTexto {
             este.posicion = este.posicion + 1
             retornar Some(valor)
         }
-        retornar None
+        retornar Ninguno
     }
     
     function tiene_siguiente() -> Booleano {
@@ -73,7 +73,7 @@ funcion main() {
         variable val = iter_num.siguiente()
         coincidir (val) {
             caso Some(v) -> escribir("  ${v}")
-            caso None -> escribir("  fin")
+            caso Ninguno -> escribir("  fin")
         }
     }
     
@@ -88,7 +88,7 @@ funcion main() {
         variable val = iter_txt.siguiente()
         coincidir (val) {
             caso Some(v) -> escribir("  ${v}")
-            caso None -> escribir("  fin")
+            caso Ninguno -> escribir("  fin")
         }
     }
 }

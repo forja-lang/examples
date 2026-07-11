@@ -1,10 +1,10 @@
 /// Opcion básico
-/// Conceptos: Opcion<Entero>, Some(), None(), valores opcionales
+/// Conceptos: Opcion<Entero>, Some(), Ninguno(), valores opcionales
 /// Nivel: intermedio
 
 importar "std/io"
 
-// Opcion representa un valor que puede existir (Some) o no (None)
+// Opcion representa un valor que puede existir (Some) o no (Ninguno)
 
 funcion buscar_en_lista(lista, objetivo) -> Opcion<Entero> {
     variable i = 0
@@ -14,7 +14,7 @@ funcion buscar_en_lista(lista, objetivo) -> Opcion<Entero> {
         }
         i = i + 1
     }
-    retornar None
+    retornar Ninguno
 }
 
 variable numeros = [10, 20, 30, 40, 50]
@@ -30,7 +30,7 @@ escribir("Índice del 99: ${no_encontrado}")
 // Opcion como retorno de función simple:
 funcion dividir_seguro(a, b) -> Opcion<Entero> {
     si (b == 0) {
-        retornar None
+        retornar Ninguno
     }
     retornar Some(a / b)
 }

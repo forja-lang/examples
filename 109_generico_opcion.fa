@@ -1,5 +1,5 @@
 /// Option<T> genérico manual
-/// Conceptos: implementación manual de Opcion, Some, None
+/// Conceptos: implementación manual de Opcion, Some, Ninguno
 /// Nivel: avanzado
 
 importar "std/io"
@@ -20,7 +20,7 @@ clase MiOpcion<T> {
         retornar este.tiene_valor
     }
     
-    funcion es_none() -> Booleano {
+    funcion es_Ninguno() -> Booleano {
         retornar no este.tiene_valor
     }
     
@@ -28,7 +28,7 @@ clase MiOpcion<T> {
         si (este.tiene_valor) {
             retornar Some(este.valor)
         }
-        retornar None
+        retornar Ninguno
     }
 }
 
@@ -52,24 +52,24 @@ funcion main() {
     
     escribir("MiOpcion con 42:")
     escribir("  ¿Es Some? ${opt_entero.es_some()}")
-    escribir("  ¿Es None? ${opt_entero.es_none()}")
+    escribir("  ¿Es Ninguno? ${opt_entero.es_Ninguno()}")
     
     coincidir (opt_entero.obtener_valor()) {
         caso Some(v) -> escribir("  Valor: ${v}")
-        caso None -> escribir("  Sin valor")
+        caso Ninguno -> escribir("  Sin valor")
     }
     
     escribir("")
     escribir("MiOpcion con \"Hola\":")
     coincidir (opt_texto.obtener_valor()) {
         caso Some(v) -> escribir("  Valor: ${v}")
-        caso None -> escribir("  Sin valor")
+        caso Ninguno -> escribir("  Sin valor")
     }
     
     escribir("")
     escribir("MiOpcion vacío:")
     escribir("  ¿Es Some? ${opt_vacio.es_some()}")
-    escribir("  ¿Es None? ${opt_vacio.es_none()}")
+    escribir("  ¿Es Ninguno? ${opt_vacio.es_Ninguno()}")
 }
 
 main()

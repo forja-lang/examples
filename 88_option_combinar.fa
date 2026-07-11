@@ -1,5 +1,5 @@
 /// Combinar múltiples Opcion
-/// Conceptos: múltiples Some/None, composición, valores opcionales
+/// Conceptos: múltiples Some/Ninguno, composición, valores opcionales
 /// Nivel: intermedio
 
 importar "std/io"
@@ -14,14 +14,14 @@ funcion buscar_en_lista(lista, objetivo) -> Opcion<Entero> {
         }
         i = i + 1
     }
-    retornar None
+    retornar Ninguno
 }
 
 funcion primer_elem(lista) -> Opcion<Entero> {
     si (longitud(lista) > 0) {
         retornar Some(lista[0])
     }
-    retornar None
+    retornar Ninguno
 }
 
 funcion ultimo_elem(lista) -> Opcion<Entero> {
@@ -29,7 +29,7 @@ funcion ultimo_elem(lista) -> Opcion<Entero> {
     si (n > 0) {
         retornar Some(lista[n - 1])
     }
-    retornar None
+    retornar Ninguno
 }
 
 funcion combinar_opciones(a, b) {
@@ -41,17 +41,17 @@ funcion combinar_opciones(a, b) {
                 caso Some(vb) -> {
                     escribir("  Ambos tienen valor: ${va} y ${vb}")
                 }
-                caso None -> {
+                caso Ninguno -> {
                     escribir("  Solo A tiene valor: ${va}")
                 }
             }
         }
-        caso None -> {
+        caso Ninguno -> {
             coincidir (b) {
                 caso Some(vb) -> {
                     escribir("  Solo B tiene valor: ${vb}")
                 }
-                caso None -> {
+                caso Ninguno -> {
                     escribir("  Ninguno tiene valor")
                 }
             }

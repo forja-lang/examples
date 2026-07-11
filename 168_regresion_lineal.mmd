@@ -1,0 +1,217 @@
+graph TD
+    %% Importar "std/io"
+
+    subgraph Fn_media ["funcion media(arr)->Decimal"]
+    N0(["Inicio"])
+    N1["var suma = 0"]
+    N2["var i = 0"]
+    N1 --> N2
+    N3{"mientras (i &lt; longitud(arr))"}
+    N4["suma = suma + arr[i]"]
+    N5["i = i + 1"]
+    N4 --> N5
+    N3 -- Si --> N4
+    N5 --> N3
+    N6["Fin Mientras"]
+    N3 -- No --> N6
+    N2 --> N3
+    N7["retornar suma / longitud(arr)"]
+    N6 --> N7
+    N0 --> N1
+    N8(["Fin"])
+    N7 --> N8
+    end
+
+
+    subgraph Class_RegresionLineal ["clase RegresionLineal"]
+        subgraph Met_RegresionLineal_nuevo ["metodo nuevo()"]
+    N9(["Inicio"])
+    N10["self.pendiente = 0"]
+    N11["self.interseccion = 0"]
+    N10 --> N11
+    N12["self.r_cuadrado = 0"]
+    N11 --> N12
+    N13["self.x_media = 0"]
+    N12 --> N13
+    N14["self.y_media = 0"]
+    N13 --> N14
+        N9 --> N10
+    N15(["Fin"])
+        N14 --> N15
+        end
+        subgraph Met_RegresionLineal_entrenar ["metodo entrenar(x, y)"]
+    N16(["Inicio"])
+    N17["var n = longitud(x)"]
+    N18{"si (n != longitud(y) || n == 0)"}
+    N19["escribir(&quot;  Error: Los arrays deben tener el mismo tamaño y no estar vacíos.&quot;)"]
+    N20["retornar"]
+    N19 --> N20
+    N18 -- Si --> N19
+    N21((" "))
+    N20 --> N21
+    N18 -- Sino --> N21
+    N17 --> N18
+    N22["self.x_media = media(x)"]
+    N21 --> N22
+    N23["self.y_media = media(y)"]
+    N22 --> N23
+    N24["var numerador = 0"]
+    N23 --> N24
+    N25["var denominador = 0"]
+    N24 --> N25
+    N26["var i = 0"]
+    N25 --> N26
+    N27{"mientras (i &lt; n)"}
+    N28["var x_diff = x[i] - self.x_media"]
+    N29["var y_diff = y[i] - self.y_media"]
+    N28 --> N29
+    N30["numerador = numerador + x_diff * y_diff"]
+    N29 --> N30
+    N31["denominador = denominador + x_diff * x_diff"]
+    N30 --> N31
+    N32["i = i + 1"]
+    N31 --> N32
+    N27 -- Si --> N28
+    N32 --> N27
+    N33["Fin Mientras"]
+    N27 -- No --> N33
+    N26 --> N27
+    N34{"si (denominador == 0)"}
+    N35["escribir(&quot;  Error: Todos los valores de x son iguales.&quot;)"]
+    N36["retornar"]
+    N35 --> N36
+    N34 -- Si --> N35
+    N37((" "))
+    N36 --> N37
+    N34 -- Sino --> N37
+    N33 --> N34
+    N38["self.pendiente = numerador / denominador"]
+    N37 --> N38
+    N39["self.interseccion = self.y_media - self.pendiente * self.x_media"]
+    N38 --> N39
+    N40["var ss_res = 0"]
+    N39 --> N40
+    N41["var ss_tot = 0"]
+    N40 --> N41
+    N42["var j = 0"]
+    N41 --> N42
+    N43{"mientras (j &lt; n)"}
+    N44["var prediccion = self.predecir(x[j])"]
+    N45["var res = y[j] - prediccion"]
+    N44 --> N45
+    N46["ss_res = ss_res + res * res"]
+    N45 --> N46
+    N47["var tot = y[j] - self.y_media"]
+    N46 --> N47
+    N48["ss_tot = ss_tot + tot * tot"]
+    N47 --> N48
+    N49["j = j + 1"]
+    N48 --> N49
+    N43 -- Si --> N44
+    N49 --> N43
+    N50["Fin Mientras"]
+    N43 -- No --> N50
+    N42 --> N43
+    N51{"si (ss_tot == 0)"}
+    N52["self.r_cuadrado = 1"]
+    N51 -- Si --> N52
+    N53((" "))
+    N52 --> N53
+    N54["self.r_cuadrado = 1 - (ss_res / ss_tot)"]
+    N51 -- Sino --> N54
+    N54 --> N53
+    N50 --> N51
+        N16 --> N17
+    N55(["Fin"])
+        N53 --> N55
+        end
+        subgraph Met_RegresionLineal_predecir ["metodo predecir(x_valor)"]
+    N56(["Inicio"])
+    N57["retornar self.pendiente * x_valor + self.interseccion"]
+        N56 --> N57
+    N58(["Fin"])
+        N57 --> N58
+        end
+        subgraph Met_RegresionLineal_mostrar ["metodo mostrar()"]
+    N59(["Inicio"])
+    N60["escribir(&quot;  Ecuación: y = &quot; + self.pendiente + &quot;x + &quot; + self.interseccion + &quot;&quot;)"]
+    N61["escribir(&quot;  R² = &quot; + self.r_cuadrado + &quot;&quot;)"]
+    N60 --> N61
+        N59 --> N60
+    N62(["Fin"])
+        N61 --> N62
+        end
+    end
+
+
+    subgraph Fn_main ["funcion main()"]
+    N63(["Inicio"])
+    N64["escribir(&quot;=== REGRESIÓN LINEAL SIMPLE ===
+&quot;)"]
+    N65["escribir(&quot;Método de mínimos cuadrados: y = mx + b
+&quot;)"]
+    N64 --> N65
+    N66["var horas_estudio = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"]
+    N65 --> N66
+    N67["var calificaciones = [52, 55, 58, 65, 70, 73, 78, 82, 88, 92]"]
+    N66 --> N67
+    N68["escribir(&quot;Datos de entrenamiento:&quot;)"]
+    N67 --> N68
+    N69["escribir(&quot;  Horas de estudio → Calificación&quot;)"]
+    N68 --> N69
+    N70["var i = 0"]
+    N69 --> N70
+    N71{"mientras (i &lt; longitud(horas_estudio))"}
+    N72["escribir(&quot;  &quot; + horas_estudio[i] + &quot;h → &quot; + calificaciones[i] + &quot; puntos&quot;)"]
+    N73["i = i + 1"]
+    N72 --> N73
+    N71 -- Si --> N72
+    N73 --> N71
+    N74["Fin Mientras"]
+    N71 -- No --> N74
+    N70 --> N71
+    N75["var modelo = nuevo RegresionLineal()"]
+    N74 --> N75
+    N76["modelo.entrenar(horas_estudio, calificaciones)"]
+    N75 --> N76
+    N77["escribir(&quot;&quot;)"]
+    N76 --> N77
+    N78["escribir(&quot;Modelo entrenado:&quot;)"]
+    N77 --> N78
+    N79["modelo.mostrar()"]
+    N78 --> N79
+    N80["escribir(&quot;&quot;)"]
+    N79 --> N80
+    N81["escribir(&quot;Predicciones:&quot;)"]
+    N80 --> N81
+    N82["var predecir_horas = [0, 2.5, 7.5, 11, 12]"]
+    N81 --> N82
+    N83["var j = 0"]
+    N82 --> N83
+    N84{"mientras (j &lt; longitud(predecir_horas))"}
+    N85["var h = predecir_horas[j]"]
+    N86["var pred = modelo.predecir(h)"]
+    N85 --> N86
+    N87["escribir(&quot;  &quot; + h + &quot;h de estudio → calificación estimada: &quot; + pred + &quot;&quot;)"]
+    N86 --> N87
+    N88["j = j + 1"]
+    N87 --> N88
+    N84 -- Si --> N85
+    N88 --> N84
+    N89["Fin Mientras"]
+    N84 -- No --> N89
+    N83 --> N84
+    N90["escribir(&quot;&quot;)"]
+    N89 --> N90
+    N91["escribir(&quot;La regresión lineal encuentra la recta que mejor se ajusta&quot;)"]
+    N90 --> N91
+    N92["escribir(&quot;a los datos minimizando la suma de errores al cuadrado.&quot;)"]
+    N91 --> N92
+    N93["escribir(&quot;R² cercano a 1 indica un buen ajuste del modelo.&quot;)"]
+    N92 --> N93
+    N63 --> N64
+    N94(["Fin"])
+    N93 --> N94
+    end
+
+    N95["main()"]
