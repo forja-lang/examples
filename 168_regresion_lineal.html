@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang='es'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1.0'>
+<title>diagram Forja</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d1117;color:#c9d1d9;padding:20px}
+.hd{margin-bottom:20px;padding:12px 16px;background:#161b22;border-radius:8px;border:1px solid#30363d;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hd h1{font-size:1.2em;margin-right:auto}
+button{background:#21262d;color:#c9d1d9;border:1px solid#30363d;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:.8em}
+button:hover{background:#30363d}
+button.a{background:#1f6feb;border-color:#1f6feb}
+.v{background:#161b22;border-radius:8px;border:1px solid#30363d;padding:16px;overflow-x:auto}
+
+/* ARBOL */
+.t ul{list-style:none;padding-left:22px}
+.t li{margin:2px 0}
+.t .n{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:5px;cursor:pointer;font-size:.82em;font-family:'Cascadia Code',monospace;white-space:nowrap;border:1px solid transparent}
+.t .n:hover{border-color:#30363d}
+.t .arw{display:inline-block;width:10px;text-align:center;color:#484f58;font-size:.65em;transition:transform .15s}
+.t .cl .arw{transform:rotate(-90deg)}
+.t .b{font-size:.65em;padding:1px 5px;border-radius:8px}
+.t .ch{margin-left:4px;border-left:1px solid#21262d;padding-left:8px}
+.t .hd{display:none}
+.nv{background:#0a2a2a}.bv{background:#238636;color:#fff}
+.nf{background:#0a0a2a}.bf{background:#1f6feb;color:#fff}
+.nc{background:#1a0a2a}.bc{background:#8957e5;color:#fff}
+.ns{background:#2a1a0a}.bs{background:#d29922;color:#fff}
+.nb{background:#0a2a1a}.bb{background:#2ea043;color:#fff}
+.nl{background:#1a0a2a}.bl{background:#bc8cff;color:#fff}
+.nr{background:#2a0a0a}.br{background:#f85149;color:#fff}
+.na{background:#0a1a2a}.ba{background:#58a6ff;color:#fff}
+.ni{background:#1a2a0a}.bi{background:#3fb950;color:#fff}
+.ne{background:#0a0a2a}.be{background:#79c0ff;color:#fff}
+
+/* FLUJO - CSS puro con bordes */
+.f{display:none}
+.fw{display:flex;flex-direction:column;align-items:center;padding:4px 0}
+.fw .bx{padding:8px 16px;font-size:.82em;font-family:'Cascadia Code',monospace;text-align:center;min-width:100px;max-width:320px;border:2px solid;border-radius:5px;display:inline-block}
+.fw .tg{font-size:.6em;opacity:.7;display:block;text-transform:uppercase;letter-spacing:1px}
+.fw .ar{width:2px;height:22px;background:#484f58;position:relative}
+.fw .ar::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #484f58}
+.fw .sc{background:#0a2a1a;border-color:#2ea043}
+.fw .ec{background:#2a0a0a;border-color:#f85149}
+.fw .vc{background:#0a2a2a;border-color:#238636}
+.fw .ac{background:#0a1a2a;border-color:#58a6ff}
+.fw .fc{background:#0a0a2a;border-color:#1f6feb}
+.fw .cc{background:#1a0a2a;border-color:#8957e5}
+.fw .ic{background:#2a1a0a;border-color:#d29922}
+.fw .lc{background:#1a0a2a;border-color:#bc8cff}
+.fw .rc{background:#2a0a0a;border-color:#f85149}
+.fw .ioc{background:#1a2a0a;border-color:#3fb950}
+.fw .br{display:flex;gap:30px;justify-content:center;padding:2px 0;width:100%}
+.fw .bc{display:flex;flex-direction:column;align-items:center}
+.fw .bl{font-size:.75em;color:#d29922;margin:3px 0;padding:2px 10px;background:#2a1a0a;border:1px solid#d29922;border-radius:4px;display:inline-block}
+.fw .jl{width:2px;height:16px;background:#484f58}
+
+@media print{body{background:#fff;color:#000;padding:0}.hd{display:none}.v{border:none;padding:10px;background:#fff}.t ul{padding-left:14px}.t .n{border-color:#ccc!important}.t .hd{display:block!important}.t .cl .arw{transform:none}.fw .ar,.fw .jl{background:#999!important}.fw .ar::after{border-top-color:#999!important}.fw .bx{border-color:#333!important}@page{margin:1cm}}
+</style></head><body>
+<div class='hd'><h1>diagram Forja</h1><span class='stats'>5 declaraciones</span>
+<button id='ba' class='a' onclick="v('a')">Arbol</button>
+<button id='bf' onclick="v('f')">Flujo</button>
+<button onclick="ex()">Expandir</button><button onclick="co()">Colapsar</button><button onclick="window.print()">PDF</button></div>
+<div id='va' class='v t'><ul><li><span id='n0' class='n ni cl'><span class='arw'> </span>importar "std/io" <span class='b bimportar'>importar</span></span>
+</li>
+<li><span id='n1' class='n nf' onclick='t(1)'><span class='arw'>▼</span><b>funcion</b> media(arr)->Decimal <span class='b bfuncion'>funcion</span></span>
+<ul id='c1' class='ch'>
+<li><span id='n2' class='n nv cl'><span class='arw'> </span><b>var</b> suma=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n3' class='n nv cl'><span class='arw'> </span><b>var</b> i=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n4' class='n nb' onclick='t(4)'><span class='arw'>▼</span><b>mientras</b> (i<longitud(arr)) <span class='b bbucle'>bucle</span></span>
+<ul id='c4' class='ch'>
+<li><span id='n5' class='n na cl'><span class='arw'> </span>asignar suma = suma+arr[i] <span class='b basignar'>asignar</span></span>
+</li>
+<li><span id='n6' class='n na cl'><span class='arw'> </span>asignar i = i+1 <span class='b basignar'>asignar</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n7' class='n nr cl'><span class='arw'> </span>retornar suma/longitud(arr) <span class='b bretorno'>retorno</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n8' class='n nc' onclick='t(8)'><span class='arw'>▼</span><b>clase</b> RegresionLineal <span class='b bclase'>clase</span></span>
+<ul id='c8' class='ch'>
+<li><span id='n9' class='n nf' onclick='t(9)'><span class='arw'>▼</span><b>metodo</b> nuevo() <span class='b bmetodo'>metodo</span></span>
+<ul id='c9' class='ch'>
+<li><span id='n10' class='n ne cl'><span class='arw'> </span>expresion self.pendiente=0 <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n11' class='n ne cl'><span class='arw'> </span>expresion self.interseccion=0 <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n12' class='n ne cl'><span class='arw'> </span>expresion self.r_cuadrado=0 <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n13' class='n ne cl'><span class='arw'> </span>expresion self.x_media=0 <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n14' class='n ne cl'><span class='arw'> </span>expresion self.y_media=0 <span class='b bexpresion'>expresion</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n15' class='n nf' onclick='t(15)'><span class='arw'>▼</span><b>metodo</b> entrenar(x,y) <span class='b bmetodo'>metodo</span></span>
+<ul id='c15' class='ch'>
+<li><span id='n16' class='n nv cl'><span class='arw'> </span><b>var</b> n=longitud(x) <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n17' class='n ns' onclick='t(17)'><span class='arw'>▼</span><b>si</b> (n!=longitud(y)||n==0) <span class='b bcondicional'>condicional</span></span>
+<ul id='c17' class='ch'>
+<li><span id='n18' class='n ns' onclick='t(18)'><span class='arw'>▼</span>verdadero <span class='b bthen'>then</span></span>
+<ul id='c18' class='ch'>
+<li><span id='n19' class='n nl cl'><span class='arw'> </span>llamada escribir("  Error: Los arrays deben tener el mismo tamaño y no estar vacíos.") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n20' class='n nr cl'><span class='arw'> </span>retornar <span class='b bretorno'>retorno</span></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span id='n21' class='n ne cl'><span class='arw'> </span>expresion self.x_media=media(x) <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n22' class='n ne cl'><span class='arw'> </span>expresion self.y_media=media(y) <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n23' class='n nv cl'><span class='arw'> </span><b>var</b> numerador=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n24' class='n nv cl'><span class='arw'> </span><b>var</b> denominador=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n25' class='n nv cl'><span class='arw'> </span><b>var</b> i=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n26' class='n nb' onclick='t(26)'><span class='arw'>▼</span><b>mientras</b> (i<n) <span class='b bbucle'>bucle</span></span>
+<ul id='c26' class='ch'>
+<li><span id='n27' class='n nv cl'><span class='arw'> </span><b>var</b> x_diff=x[i]-self.x_media <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n28' class='n nv cl'><span class='arw'> </span><b>var</b> y_diff=y[i]-self.y_media <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n29' class='n na cl'><span class='arw'> </span>asignar numerador = numerador+x_diff*y_diff <span class='b basignar'>asignar</span></span>
+</li>
+<li><span id='n30' class='n na cl'><span class='arw'> </span>asignar denominador = denominador+x_diff*x_diff <span class='b basignar'>asignar</span></span>
+</li>
+<li><span id='n31' class='n na cl'><span class='arw'> </span>asignar i = i+1 <span class='b basignar'>asignar</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n32' class='n ns' onclick='t(32)'><span class='arw'>▼</span><b>si</b> (denominador==0) <span class='b bcondicional'>condicional</span></span>
+<ul id='c32' class='ch'>
+<li><span id='n33' class='n ns' onclick='t(33)'><span class='arw'>▼</span>verdadero <span class='b bthen'>then</span></span>
+<ul id='c33' class='ch'>
+<li><span id='n34' class='n nl cl'><span class='arw'> </span>llamada escribir("  Error: Todos los valores de x son iguales.") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n35' class='n nr cl'><span class='arw'> </span>retornar <span class='b bretorno'>retorno</span></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span id='n36' class='n ne cl'><span class='arw'> </span>expresion self.pendiente=numerador/denominador <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n37' class='n ne cl'><span class='arw'> </span>expresion self.interseccion=self.y_media-self.pendiente*self.x_media <span class='b bexpresion'>expresion</span></span>
+</li>
+<li><span id='n38' class='n nv cl'><span class='arw'> </span><b>var</b> ss_res=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n39' class='n nv cl'><span class='arw'> </span><b>var</b> ss_tot=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n40' class='n nv cl'><span class='arw'> </span><b>var</b> j=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n41' class='n nb' onclick='t(41)'><span class='arw'>▼</span><b>mientras</b> (j<n) <span class='b bbucle'>bucle</span></span>
+<ul id='c41' class='ch'>
+<li><span id='n42' class='n nv cl'><span class='arw'> </span><b>var</b> prediccion=self.predecir(x[j]) <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n43' class='n nv cl'><span class='arw'> </span><b>var</b> res=y[j]-prediccion <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n44' class='n na cl'><span class='arw'> </span>asignar ss_res = ss_res+res*res <span class='b basignar'>asignar</span></span>
+</li>
+<li><span id='n45' class='n nv cl'><span class='arw'> </span><b>var</b> tot=y[j]-self.y_media <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n46' class='n na cl'><span class='arw'> </span>asignar ss_tot = ss_tot+tot*tot <span class='b basignar'>asignar</span></span>
+</li>
+<li><span id='n47' class='n na cl'><span class='arw'> </span>asignar j = j+1 <span class='b basignar'>asignar</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n48' class='n ns' onclick='t(48)'><span class='arw'>▼</span><b>si</b> (ss_tot==0) <span class='b bcondicional'>condicional</span></span>
+<ul id='c48' class='ch'>
+<li><span id='n49' class='n ns' onclick='t(49)'><span class='arw'>▼</span>verdadero <span class='b bthen'>then</span></span>
+<ul id='c49' class='ch'>
+<li><span id='n50' class='n ne cl'><span class='arw'> </span>expresion self.r_cuadrado=1 <span class='b bexpresion'>expresion</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n51' class='n ns' onclick='t(51)'><span class='arw'>▼</span>falso <span class='b belse'>else</span></span>
+<ul id='c51' class='ch'>
+<li><span id='n52' class='n ne cl'><span class='arw'> </span>expresion self.r_cuadrado=1-(ss_res/ss_tot) <span class='b bexpresion'>expresion</span></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span id='n53' class='n nf' onclick='t(53)'><span class='arw'>▼</span><b>metodo</b> predecir(x_valor) <span class='b bmetodo'>metodo</span></span>
+<ul id='c53' class='ch'>
+<li><span id='n54' class='n nr cl'><span class='arw'> </span>retornar self.pendiente*x_valor+self.interseccion <span class='b bretorno'>retorno</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n55' class='n nf' onclick='t(55)'><span class='arw'>▼</span><b>metodo</b> mostrar() <span class='b bmetodo'>metodo</span></span>
+<ul id='c55' class='ch'>
+<li><span id='n56' class='n nl cl'><span class='arw'> </span>llamada escribir("  Ecuación: y = "+self.pendiente+"x + "+self.interseccion+"") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n57' class='n nl cl'><span class='arw'> </span>llamada escribir("  R² = "+self.r_cuadrado+"") <span class='b bllamada'>llamada</span></span>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span id='n58' class='n nf' onclick='t(58)'><span class='arw'>▼</span><b>funcion</b> main() <span class='b bfuncion'>funcion</span></span>
+<ul id='c58' class='ch'>
+<li><span id='n59' class='n nl cl'><span class='arw'> </span>llamada escribir("=== REGRESIÓN LINEAL SIMPLE ===
+") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n60' class='n nl cl'><span class='arw'> </span>llamada escribir("Método de mínimos cuadrados: y = mx + b
+") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n61' class='n nv cl'><span class='arw'> </span><b>var</b> horas_estudio=[1,2,3,4,5,6,7,8,9,10] <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n62' class='n nv cl'><span class='arw'> </span><b>var</b> calificaciones=[52,55,58,65,70,73,78,82,88,92] <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n63' class='n nl cl'><span class='arw'> </span>llamada escribir("Datos de entrenamiento:") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n64' class='n nl cl'><span class='arw'> </span>llamada escribir("  Horas de estudio → Calificación") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n65' class='n nv cl'><span class='arw'> </span><b>var</b> i=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n66' class='n nb' onclick='t(66)'><span class='arw'>▼</span><b>mientras</b> (i<longitud(horas_estudio)) <span class='b bbucle'>bucle</span></span>
+<ul id='c66' class='ch'>
+<li><span id='n67' class='n nl cl'><span class='arw'> </span>llamada escribir("  "+horas_estudio[i]+"h → "+calificaciones[i]+" puntos") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n68' class='n na cl'><span class='arw'> </span>asignar i = i+1 <span class='b basignar'>asignar</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n69' class='n nv cl'><span class='arw'> </span><b>var</b> modelo=nuevo RegresionLineal() <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n70' class='n nl cl'><span class='arw'> </span>llamada modelo.entrenar(horas_estudio,calificaciones) <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n71' class='n nl cl'><span class='arw'> </span>llamada escribir("") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n72' class='n nl cl'><span class='arw'> </span>llamada escribir("Modelo entrenado:") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n73' class='n nl cl'><span class='arw'> </span>llamada modelo.mostrar() <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n74' class='n nl cl'><span class='arw'> </span>llamada escribir("") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n75' class='n nl cl'><span class='arw'> </span>llamada escribir("Predicciones:") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n76' class='n nv cl'><span class='arw'> </span><b>var</b> predecir_horas=[0,2.5,7.5,11,12] <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n77' class='n nv cl'><span class='arw'> </span><b>var</b> j=0 <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n78' class='n nb' onclick='t(78)'><span class='arw'>▼</span><b>mientras</b> (j<longitud(predecir_horas)) <span class='b bbucle'>bucle</span></span>
+<ul id='c78' class='ch'>
+<li><span id='n79' class='n nv cl'><span class='arw'> </span><b>var</b> h=predecir_horas[j] <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n80' class='n nv cl'><span class='arw'> </span><b>var</b> pred=modelo.predecir(h) <span class='b bvariable'>variable</span></span>
+</li>
+<li><span id='n81' class='n nl cl'><span class='arw'> </span>llamada escribir("  "+h+"h de estudio → calificación estimada: "+pred+"") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n82' class='n na cl'><span class='arw'> </span>asignar j = j+1 <span class='b basignar'>asignar</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n83' class='n nl cl'><span class='arw'> </span>llamada escribir("") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n84' class='n nl cl'><span class='arw'> </span>llamada escribir("La regresión lineal encuentra la recta que mejor se ajusta") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n85' class='n nl cl'><span class='arw'> </span>llamada escribir("a los datos minimizando la suma de errores al cuadrado.") <span class='b bllamada'>llamada</span></span>
+</li>
+<li><span id='n86' class='n nl cl'><span class='arw'> </span>llamada escribir("R² cercano a 1 indica un buen ajuste del modelo.") <span class='b bllamada'>llamada</span></span>
+</li>
+</ul>
+</li>
+<li><span id='n87' class='n nl cl'><span class='arw'> </span>llamada main() <span class='b bllamada'>llamada</span></span>
+</li>
+</ul></div>
+<div id='vf' class='v f'><div class='fw'><div class='bx sc'>INICIO</div><div class='ar'></div><div class='bx ioc'><span class='tg'>IMPORTAR</span>"std/io"</div><div class='ar'></div><div class='bx fc'><span class='tg'>FUNCION</span>media(arr)->Decimal</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var suma = 0</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var i = 0</div><div class='ar'></div><div class='bx ic'><span class='tg'>MIENTRAS</span>i<longitud(arr)</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>suma = suma+arr[i]</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>i = i+1</div><div class='ar'></div><div class='bx vc'><span class='tg'>REPETIR</span></div><div class='ar'></div><div class='bx rc'><span class='tg'>RETORNAR</span>suma/longitud(arr)</div><div class='ar'></div><div class='bx cc'><span class='tg'>CLASE</span>RegresionLineal</div><div class='ar'></div><div class='bx fc'><span class='tg'>METODO</span>nuevo()</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.pendiente=0</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.interseccion=0</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.r_cuadrado=0</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.x_media=0</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.y_media=0</div><div class='ar'></div><div class='bx fc'><span class='tg'>METODO</span>entrenar(x,y)</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var n = longitud(x)</div><div class='ar'></div><div class='bx ic'><span class='tg'>CONDICION</span><b>si</b> (n!=longitud(y)||n==0)</div><div style='display:flex;width:100%;align-items:center;height:24px;position:relative'><div style='flex:1;height:2px;background:#484f58'></div></div><div class='br'><div class='bc'><span class='bl'>SI</span><div class='jl'></div><div class='fw' style='padding:0'><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  Error: Los arrays deben tener el mismo tamaño y no estar vacíos.")</div><div class='ar'></div><div class='bx rc'><span class='tg'>RETORNAR</span></div></div></div></div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.x_media=media(x)</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.y_media=media(y)</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var numerador = 0</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var denominador = 0</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var i = 0</div><div class='ar'></div><div class='bx ic'><span class='tg'>MIENTRAS</span>i<n</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var x_diff = x[i]-self.x_media</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var y_diff = y[i]-self.y_media</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>numerador = numerador+x_diff*y_diff</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>denominador = denominador+x_diff*x_diff</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>i = i+1</div><div class='ar'></div><div class='bx vc'><span class='tg'>REPETIR</span></div><div class='ar'></div><div class='bx ic'><span class='tg'>CONDICION</span><b>si</b> (denominador==0)</div><div style='display:flex;width:100%;align-items:center;height:24px;position:relative'><div style='flex:1;height:2px;background:#484f58'></div></div><div class='br'><div class='bc'><span class='bl'>SI</span><div class='jl'></div><div class='fw' style='padding:0'><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  Error: Todos los valores de x son iguales.")</div><div class='ar'></div><div class='bx rc'><span class='tg'>RETORNAR</span></div></div></div></div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.pendiente=numerador/denominador</div><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.interseccion=self.y_media-self.pendiente*self.x_media</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var ss_res = 0</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var ss_tot = 0</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var j = 0</div><div class='ar'></div><div class='bx ic'><span class='tg'>MIENTRAS</span>j<n</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var prediccion = self.predecir(x[j])</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var res = y[j]-prediccion</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>ss_res = ss_res+res*res</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var tot = y[j]-self.y_media</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>ss_tot = ss_tot+tot*tot</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>j = j+1</div><div class='ar'></div><div class='bx vc'><span class='tg'>REPETIR</span></div><div class='ar'></div><div class='bx ic'><span class='tg'>CONDICION</span><b>si</b> (ss_tot==0)</div><div style='display:flex;width:100%;align-items:center;height:24px;position:relative'><div style='flex:1;height:2px;background:#484f58'></div></div><div class='br'><div class='bc'><span class='bl'>SI</span><div class='jl'></div><div class='fw' style='padding:0'><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.r_cuadrado=1</div></div></div><div class='bc'><span class='bl'>SINO</span><div class='jl'></div><div class='fw' style='padding:0'><div class='ar'></div><div class='bx ne'><span class='tg'>EXPRESION</span>self.r_cuadrado=1-(ss_res/ss_tot)</div></div></div></div><div class='ar'></div><div class='bx fc'><span class='tg'>METODO</span>predecir(x_valor)</div><div class='ar'></div><div class='bx rc'><span class='tg'>RETORNAR</span>self.pendiente*x_valor+self.interseccion</div><div class='ar'></div><div class='bx fc'><span class='tg'>METODO</span>mostrar()</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  Ecuación: y = "+self.pendiente+"x + "+self.interseccion+"")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  R² = "+self.r_cuadrado+"")</div><div class='ar'></div><div class='bx fc'><span class='tg'>FUNCION</span>main()</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("=== REGRESIÓN LINEAL SIMPLE ===
+")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("Método de mínimos cuadrados: y = mx + b
+")</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var horas_estudio = [1,2,3,4,5,6,7,8,9,10]</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var calificaciones = [52,55,58,65,70,73,78,82,88,92]</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("Datos de entrenamiento:")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  Horas de estudio → Calificación")</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var i = 0</div><div class='ar'></div><div class='bx ic'><span class='tg'>MIENTRAS</span>i<longitud(horas_estudio)</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  "+horas_estudio[i]+"h → "+calificaciones[i]+" puntos")</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>i = i+1</div><div class='ar'></div><div class='bx vc'><span class='tg'>REPETIR</span></div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var modelo = nuevo RegresionLineal()</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>modelo.entrenar(horas_estudio,calificaciones)</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("Modelo entrenado:")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>modelo.mostrar()</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("Predicciones:")</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var predecir_horas = [0,2.5,7.5,11,12]</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var j = 0</div><div class='ar'></div><div class='bx ic'><span class='tg'>MIENTRAS</span>j<longitud(predecir_horas)</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var h = predecir_horas[j]</div><div class='ar'></div><div class='bx vc'><span class='tg'>VARIABLE</span>var pred = modelo.predecir(h)</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("  "+h+"h de estudio → calificación estimada: "+pred+"")</div><div class='ar'></div><div class='bx ac'><span class='tg'>ASIGNACION</span>j = j+1</div><div class='ar'></div><div class='bx vc'><span class='tg'>REPETIR</span></div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("La regresión lineal encuentra la recta que mejor se ajusta")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("a los datos minimizando la suma de errores al cuadrado.")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>escribir("R² cercano a 1 indica un buen ajuste del modelo.")</div><div class='ar'></div><div class='bx lc'><span class='tg'>LLAMADA</span>main()</div><div class='bx ec'>FIN</div></div></div>
+<script>
+function v(x){document.getElementById('va').style.display=x=='a'?'block':'none';document.getElementById('vf').style.display=x=='f'?'block':'none';document.getElementById('ba').className=x=='a'?'a':'';document.getElementById('bf').className=x=='f'?'a':''}
+function t(id){var e=document.getElementById('c'+id),n=document.getElementById('n'+id);if(e.classList.contains('hd')){e.classList.remove('hd');n.classList.remove('cl')}else{e.classList.add('hd');n.classList.add('cl')}}
+function ex(){document.querySelectorAll('.ch').forEach(function(e){e.classList.remove('hd')});document.querySelectorAll('.n').forEach(function(e){e.classList.remove('cl')})}
+function co(){document.querySelectorAll('.ch').forEach(function(e){e.classList.add('hd')});document.querySelectorAll('.n').forEach(function(e){e.classList.add('cl')})}
+</script></body></html>
