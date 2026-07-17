@@ -1,0 +1,26 @@
+// Test rápido de login sin input de usuario
+importar "gui"
+
+funcion buscar_usuario(usr, pass) -> Resultado {
+    si (usr == "admin" && pass == "1234") { retornar Ok("Bienvenido Admin") }
+    si (usr == "user" && pass == "pass") { retornar Ok("Bienvenido User") }
+    retornar Error("Usuario o contraseña incorrectos")
+}
+
+funcion probar(usr, pass) {
+    variable r = buscar_usuario(usr, pass)
+    coincidir (r) {
+        caso Ok(valor) -> { escribir("✅ " + usr + ": " + valor) }
+        caso Error(err) -> { escribir("❌ " + usr + ": " + err) }
+    }
+}
+
+funcion main() {
+    escribir("=== Test Login ===")
+    probar("admin", "1234")
+    probar("user", "x")
+    probar("", "1234")
+    escribir("=== Fin ===")
+}
+
+main()

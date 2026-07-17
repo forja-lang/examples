@@ -1,0 +1,86 @@
+// ─────────────────────────────────────────────────
+//  Login App Funcional — Anda en VM y en GUI nativa
+//
+//  - En la VM: muestra todo por consola con escribir()
+//  - Con --native: abre ventana GUI con Xilem
+//
+//  Ejecutar:
+//    forja ejecutar examples/403_login_funcional.fa       ← consola
+//    forja ejecutar --native examples/403_login_funcional.fa  ← ventana GUI
+// ─────────────────────────────────────────────────
+
+importar "gui"
+
+// ══════════════════════════════════════════════════
+//  Base de datos de usuarios
+// ══════════════════════════════════════════════════
+
+funcion buscar_usuario(usr, pass) -> Resultado {
+    si (usr == "admin" && pass == "1234") {
+        retornar Ok("Bienvenido Administrador")
+    }
+    si (usr == "user" && pass == "pass") {
+        retornar Ok("Bienvenido Usuario")
+    }
+    si (usr == "forja" && pass == "lang") {
+        retornar Ok("Bienvenido a Forja!")
+    }
+    si (usr == "") {
+        retornar Error("Usuario vacío")
+    }
+    si (pass == "") {
+        retornar Error("Contraseña vacía")
+    }
+    retornar Error("Usuario o contraseña incorrectos")
+}
+
+// ══════════════════════════════════════════════════
+//  Función de login con usuarios hardcodeados
+// ══════════════════════════════════════════════════
+
+funcion main() {
+    variable usuario = ""
+    variable contrasena = ""
+
+    escribir("==================================")
+    escribir("         🔐 INICIAR SESIÓN")
+    escribir("==================================")
+    escribir("")
+    escribir("Usuarios: admin/1234, user/pass, forja/lang")
+    escribir("")
+    escribir("Ingresá tus datos:")
+    escribir("")
+
+    // En VM: pedimos input por consola
+    // En GUI: entrada_texto() captura desde el campo
+    usuario = leer("👤 Usuario: ")
+    contrasena = leer("🔒 Contraseña: ")
+
+    escribir("")
+    escribir("Validando...")
+    escribir("")
+
+    // Validar
+    variable resultado = buscar_usuario(usuario, contrasena)
+    coincidir (resultado) {
+        caso Ok(valor) -> {
+            escribir("✅ " + valor)
+        }
+        caso Error(err) -> {
+            escribir("❌ " + err)
+        }
+    }
+
+    escribir("")
+    escribir("==================================")
+
+    // ─── En modo GUI (--native): mostrar ventana con los mismos datos ───
+    tema_material("#1565C0",
+        columna(
+            etiqueta("🔐 Login Forja"),
+            entrada_texto("usuario"),
+            entrada_texto("contrasena"),
+            boton_tonal("Ingresar", &main)
+        )
+    )
+}
